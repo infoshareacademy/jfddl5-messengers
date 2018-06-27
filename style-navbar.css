@@ -1,0 +1,12 @@
+ul {
+    background-color:white;
+    overflow: hidden;
+    font-size: 30px;
+}
+
+li a {
+    float: left;
+    text-align: center;
+    text-decoration: none;
+}
+
