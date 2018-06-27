@@ -1,0 +1,20 @@
+.features__section{
+    align-items: center;
+}
+
+.icons-conteiner{
+    background-color: bisque;
+}
+
+.icons{
+    width: 5%;
+    height: auto;
+    margin: 20px;
+    margin-left: 50px;
+    padding: 20px;
+    align-items: center
+}
+
+.conteiner{
+    background-color: grey;
+}
