@@ -1,12 +1,36 @@
-ul {
-    background-color:white;
-    overflow: hidden;
-    font-size: 30px;
+html, body {
+    padding: 0;
+    margin: 0;
 }
 
-li a {
-    float: left;
-    text-align: center;
-    text-decoration: none;
+.nav {
+    display: flex;
+    background-color: blue;
+    padding: 15px;
 }
 
+.logo {
+    flex-grow: 0;
+
+}
+
+.nav-list {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    flex-grow:1;
+}
+
+.nav-list-item {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+
+}
+
+.nav-list-item a {
+    display: block;
+text-align: center;
+}
