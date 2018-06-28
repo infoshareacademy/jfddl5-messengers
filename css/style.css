@@ -1,44 +1,46 @@
-.features__section{
+.features{
     display: flex;
     justify-content: center;
-    
 }
 
-.icons-conteiner{
+.features__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
+    margin: 5px;
+    width: 20vw;
+    background-color: rgba(220, 241, 245, 0.158);
+    border: 1px groove rgba(220, 241, 245, 0.158);
 }
 
-.icons{
+.features__icon{
     width: 10vw;
+    max-width: 100px;
     height: auto;
     margin: 5vw;
 }
 
-.conteiner{
-    background-color: rgba(220, 241, 245, 0.158);
-    margin: 5px;
-    display: inline-block;
-    border: 1px groove rgba(220, 241, 245, 0.158);
-    width: 20vw;
-}
-
-.icons--description{
+.features__icon-description{
     text-align: center;
-    font-size: 2vw;
+    /* @TODO rethint it! */
+    /* font-size: 2vw; */
 }
 
 @media screen and (max-width: 480px){
-    .features__section{
-        display: block;
-        
+    .features{
+        flex-direction: column;
     }
-    .conteiner{
+    .features__container{
+        flex-direction: row;
+        justify-content: flex-start;
+
         width: 90vw;
-        
     }
-    .icons--description{
+    .features__icon-description{
         font-size: 1em;
-        word-wrap: break-word;
-        
+        word-wrap: break-word; 
+        text-align: left;
     }
 }
