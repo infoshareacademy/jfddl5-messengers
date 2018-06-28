@@ -6,8 +6,9 @@
 .features__container{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    /* align-items: center; */
+    /* justify-content: center; */
+
 
     margin: 5px;
     width: 20vw;
@@ -16,14 +17,16 @@
 }
 
 .features__icon{
-    width: 10vw;
+    width: auto;
     max-width: 100px;
-    height: auto;
+    height: 10vw;
     margin: 5vw;
+    align-self: center;
+    border:1px solid red;
 }
 
 .features__icon-description{
-    text-align: center;
+    text-align: center;border:1px solid red;
     /* @TODO rethint it! */
     /* font-size: 2vw; */
 }
@@ -35,7 +38,7 @@
     .features__container{
         flex-direction: row;
         justify-content: flex-start;
-
+        align-items: center;
         width: 90vw;
     }
     .features__icon-description{
