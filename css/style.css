@@ -1,20 +1,44 @@
 .features__section{
-    align-items: center;
+    display: flex;
+    justify-content: center;
+    
 }
 
 .icons-conteiner{
-    background-color: bisque;
+
 }
 
 .icons{
-    width: 5%;
+    width: 10vw;
     height: auto;
-    margin: 20px;
-    margin-left: 50px;
-    padding: 20px;
-    align-items: center
+    margin: 5vw;
 }
 
 .conteiner{
-    background-color: grey;
+    background-color: rgba(220, 241, 245, 0.158);
+    margin: 5px;
+    display: inline-block;
+    border: 1px groove rgba(220, 241, 245, 0.158);
+    width: 20vw;
+}
+
+.icons--description{
+    text-align: center;
+    font-size: 2vw;
+}
+
+@media screen and (max-width: 480px){
+    .features__section{
+        display: block;
+        
+    }
+    .conteiner{
+        width: 90vw;
+        
+    }
+    .icons--description{
+        font-size: 1em;
+        word-wrap: break-word;
+        
+    }
 }
