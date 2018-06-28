@@ -1,26 +1,38 @@
+html, body{
+    margin: 0;
+    padding: 0;
+}
+
 .hero__img {
-    height: 400px;
+    height: 901px;
     background-image: url("https://images.unsplash.com/photo-1518600570419-81324064e9ae?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=04af4a3ac17780fdc82adf7e68b1f6ec&auto=format&fit=crop&w=1350&q=80");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     text-align: center;
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .hero__text--main {
     color:white;
-    text-align: center;
+    /* text-align: center; */
     font-family: "Times New Roman", serif;
     font-size: 5em;
-    
+    margin-bottom: 0;
+    text-shadow: 2px 2px #525050;
 }
 
+}
 .hero__text--description {
     font-family: "Times New Roman", serif;
     font-size: 1.5em;
     font-weight: 100;
     text-align: center;
-    margin: 0px 0 30px 0;
+    margin: 0px 0px 30px 0px;
+    color: white;
+    text-shadow: 1px 1px grey;
 }
 
 .hero__btn-call-to-action {
@@ -28,13 +40,15 @@
     color: white;
     font-size: 1.2em;
     text-align: center;
-    width: 20%;
-    height: 13%;
+    height: 10%;
     padding: 10px 20px;
     border: none;
-    border-radius: 7px;
+    border-radius: 10px;
     margin:0 auto;
     cursor: pointer;
     
 }
 
+.hero__btn-call-to-action:hover, .hero__btn-call-to-action:focus {
+    background-color:grey;
+}
