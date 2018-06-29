@@ -1,20 +1,25 @@
+.features__icon{grid-area: icon}
+.features__icon-description{grid-area: text}
+
 .features{
     display: flex;
     justify-content: center;
 }
 
 .features__container{
-    display: flex;
     flex-direction: column;
     /* align-items: center; */
     /* justify-content: center; */
     max-width: 250px;
+    max-height: 300px;
+    grid-template-rows: "icon" "icon" "text";
 
 
     margin: 5px;
     width: 20vw;
     background-color: rgba(220, 241, 245, 0.158);
     border: 1px groove rgba(215, 217, 218, 0.158);
+    display: grid;
 }
 
 .features__icon{
@@ -23,13 +28,15 @@
     height: 10vw;
     margin: 5vw;
     align-self: center;
-
+    padding-top: 30px;
 }
 
 .features__icon-description{
     text-align: center;
     /* @TODO rethint it! */
     /* font-size: 2vw; */
+    margin: 2.5vw 5px 0 5px;
+    font-family: 'Roboto', sans-serif;
 }
 
 @media screen and (max-width: 800px){
@@ -42,10 +49,31 @@
         align-items: center;
         width: 95vw;
         max-width: none;
+        display: flex
     }
     .features__icon-description{
         font-size: 1.2em;
         word-wrap: break-word; 
         text-align: left;
+        margin-top: 0px;
     }
+    .features__icon{
+        padding-top: 0px;
+    }
+}
+
+@media screen and (min-width: 1507px){
+    .features__container{
+        justify-content: space-evenly;
+        margin: 0px;
+        grid-template-rows: 'icon' 'icon' 'text';
+    }
+    .features__icon{
+        margin: 70px;
+        margin-top: 70px;
+    }
+    .features__icon-description{
+        margin-top: 40px;
+    }
+
 }
