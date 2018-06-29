@@ -1,17 +1,24 @@
 html, body {
     padding: 0;
     margin: 0;
+    /* Reset styles */
 }
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500&subset=latin-ext');
 
 .nav {
     display: flex;
-    background-color: blue;
+    background-color: #7979b7;
     padding: 15px;
+    opacity: 0.9;
+    font-family: 'Roboto', sans-serif;
+    /* Navigation clolors and opacity */
 }
 
 .logo {
-    flex-grow: 0;
-
+    flex-grow: 1;
+    width: 20vw;
+    padding: 10px;
 }
 
 .nav-list {
@@ -27,16 +34,18 @@ html, body {
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: 0;
-
+    padding: 10px;
 }
 
 .nav-list-item a {
     display: block;
-text-align: center;
+    text-align: center;
 }
 
 a {
-    color:white;
+    color: white;
     text-decoration: none;
-    
+    font-size: 1.3em;
+    font-weight: bold;
+    /* Added font size and text color */
 }
