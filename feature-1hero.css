@@ -2,32 +2,44 @@ html, body{
     margin: 0;
     padding: 0;
 }
-
-.hero__img {
+.hero {
     height: 100vh;
-    background-image: url("https://images.unsplash.com/photo-1518600570419-81324064e9ae?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=04af4a3ac17780fdc82adf7e68b1f6ec&auto=format&fit=crop&w=1350&q=80");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    background: rgba(22, 7, 15, 0.3); /* steruje przyciemnianiem zbyt jasnych kolorów */
     text-align: center;
-    display:flex;
-    justify-content: center;
-    flex-direction: column;
-}
+      display:flex;
+      justify-content: center;
+      flex-direction: column;
+      color: white;
+  }
+
+.hero::after {
+    content: "";
+    position: absolute;
+    background-image: url("rawpixel-653764-unsplash.jpg");
+    background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    opacity: 0.5; /* steruje przezroczystością */
+  }
 
 .hero__text--main {
     color:white;
     /* text-align: center; */
     font-family: "Times New Roman", serif;
-    font-size: 5em;
+    font-size: 7em;
     margin-bottom: 0;
-    text-shadow: 2px 2px #525050;
+    text-shadow: 1px 1px #525050;
 }
 
 
 .hero__text--description {
     font-family: "Times New Roman", serif;
-    font-size: 1.5em;
+    font-size: 2em;
     font-weight: 100;
     text-align: center;
     margin: 0px 0px 30px 0px;
@@ -36,7 +48,7 @@ html, body{
 }
 
 .hero__btn-call-to-action {
-    background-color: #9292cc;
+    background-color:#7979b7;
     color: white;
     font-size: 1.2em;
     text-align: center;
@@ -53,9 +65,23 @@ html, body{
     background-color:grey;
 }
 
-
-@media screen and (max-width:415px ) {
+@media screen and (max-width:620px ) {
+    .hero__text--main {
+        font-size: 5.2em;
+    }
+    .hero__text--description {
+        font-size: 1.7em;
+    }
+}
+@media screen and (max-width:430px ) {
     .hero__text--main {
         font-size: 4em;
+    }
+    .hero__text--description {
+        font-size: 1.1em;
+    }
+    .hero__btn-call-to-action {
+       font-size: 1em;
+       height:9%; 
     }
 }
