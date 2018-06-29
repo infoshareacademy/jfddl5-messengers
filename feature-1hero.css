@@ -4,7 +4,7 @@ html, body{
 }
 
 .hero__img {
-    height: 901px;
+    height: 100vh;
     background-image: url("https://images.unsplash.com/photo-1518600570419-81324064e9ae?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=04af4a3ac17780fdc82adf7e68b1f6ec&auto=format&fit=crop&w=1350&q=80");
     background-repeat: no-repeat;
     background-size: cover;
@@ -24,7 +24,7 @@ html, body{
     text-shadow: 2px 2px #525050;
 }
 
-}
+
 .hero__text--description {
     font-family: "Times New Roman", serif;
     font-size: 1.5em;
@@ -51,4 +51,11 @@ html, body{
 
 .hero__btn-call-to-action:hover, .hero__btn-call-to-action:focus {
     background-color:grey;
+}
+
+
+@media screen and (max-width:415px ) {
+    .hero__text--main {
+        font-size: 4em;
+    }
 }
