@@ -8,12 +8,13 @@
     flex-direction: column;
     /* align-items: center; */
     /* justify-content: center; */
+    max-width: 250px;
 
 
     margin: 5px;
     width: 20vw;
     background-color: rgba(220, 241, 245, 0.158);
-    border: 1px groove rgba(220, 241, 245, 0.158);
+    border: 1px groove rgba(215, 217, 218, 0.158);
 }
 
 .features__icon{
@@ -22,16 +23,16 @@
     height: 10vw;
     margin: 5vw;
     align-self: center;
-    border:1px solid red;
+
 }
 
 .features__icon-description{
-    text-align: center;border:1px solid red;
+    text-align: center;
     /* @TODO rethint it! */
     /* font-size: 2vw; */
 }
 
-@media screen and (max-width: 480px){
+@media screen and (max-width: 800px){
     .features{
         flex-direction: column;
     }
@@ -39,10 +40,11 @@
         flex-direction: row;
         justify-content: flex-start;
         align-items: center;
-        width: 90vw;
+        width: 95vw;
+        max-width: none;
     }
     .features__icon-description{
-        font-size: 1em;
+        font-size: 1.2em;
         word-wrap: break-word; 
         text-align: left;
     }
