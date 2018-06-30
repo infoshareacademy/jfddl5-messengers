@@ -1,51 +1,80 @@
-html, body {
-    padding: 0;
-    margin: 0;
-    /* Reset styles */
-}
-
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,500&subset=latin-ext');
-
-.nav {
-    display: flex;
-    background-color: #7979b7;
-    padding: 15px;
-    opacity: 0.9;
-    font-family: 'Roboto', sans-serif;
-    /* Navigation clolors and opacity */
-}
-
-.logo {
-    flex-grow: 1;
-    width: 20vw;
-    padding: 10px;
-}
-
-.nav-list {
-    display: flex;
-    justify-content: flex-end;
+body, html {
+    font-size: 100%;
+    font-family: 'Robot', 'sans-serif';
     margin: 0;
     padding: 0;
+}
+
+nav {
+    opacity: 0.8;
+}
+
+nav ul {
     list-style: none;
-    flex-grow:1;
+    padding: 0;
+    background: #000;
 }
 
-.nav-list-item {
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 0;
-    padding: 10px;
-}
-
-.nav-list-item a {
+nav ul li a {
+    color: #ddd;
+    text-decoration: none;
+    padding: .8rem 1rem;
     display: block;
+    line-height: 1;
+}
+
+nav ul li {
+    border-bottom: 1px solid #ddd;
+}
+
+/* styling logo */
+nav div:first-child {
+    background: #000;
+}
+
+nav div:first-child h1 {
+    line-height: 0;
+    padding: .8rem 1rem;
     text-align: center;
 }
 
-a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.3em;
-    font-weight: bold;
-    /* Added font size and text color */
+nav div:first-child h1, nav ul {
+    margin: 0;
+}
+/* Responsive settings */
+@media only screen and (min-width: 30em) {
+    nav {
+        display: flex;
+        justify-content: space-between;
+        background: #000;
+        align-content: center;
+    }
+    nav ul {
+        display: flex;
+        text-align: center;
+        background: none;
+        flex-wrap: wrap;
+    }
+
+    nav div:first-child h1 {
+        padding:0;
+        margin-left:0 1rem;
+    }
+
+    nav div:first-child img {
+        height: 40px;
+    }
+
+    nav ul li {
+        border-bottom: none;
+    }
+
+    na ul li a {
+        padding: 1.2rem 1rem;
+    }
+
+    nav ul li a:hover {
+        background: #7979b7;
+        transition: 0.5s;
+    }
 }
