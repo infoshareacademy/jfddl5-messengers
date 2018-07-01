@@ -9,7 +9,7 @@ body, html{
 .features{
     display: flex;
     justify-content: center;
-    background-color: #2ecc71;
+    background-color: #7979B7;
 }
 
 .features__container{
@@ -61,7 +61,7 @@ body, html{
         height: 70px;
         max-width: none;
         display: flex;
-        margin: 1vw;
+        margin: 0.5vw 0px 0px 2vw;
     }
     .features__icon-description{
         font-size: 1.2em;
