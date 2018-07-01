@@ -47,7 +47,7 @@ nav div:first-child h1, nav ul {
         display: flex;
         justify-content: space-between;
         background: #000;
-        align-content: center;
+        align-content: space-around;
     }
     nav ul {
         display: flex;
@@ -75,6 +75,6 @@ nav div:first-child h1, nav ul {
 
     nav ul li a:hover {
         background: #7979b7;
-        transition: 0.5s;
+        transition: 0.4s;
     }
 }
