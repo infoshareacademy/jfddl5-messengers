@@ -41,7 +41,7 @@ body, html{
 .features__icon-description{
     text-align: center;
     /* @TODO rethint it! */
-    /* font-size: 2vw; */
+    /* font-size: 1vw; */
     margin: 2.5vw 5px 0 5px;
     font-family: 'Roboto', sans-serif;
  
