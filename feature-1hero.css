@@ -24,7 +24,7 @@ html, body{
     right: 0;
     bottom: 0;
     z-index: -1;
-    opacity: 0.5; /* steruje przezroczystością */
+    opacity: 0.7; /* steruje przezroczystością */
   }
 
 .hero__text--main {
@@ -49,21 +49,25 @@ html, body{
 
 .hero__btn-call-to-action {
     background-color:#7979b7;
+    border: solid #7979b7;
     color: white;
     font-size: 1.2em;
     text-align: center;
     height: 10%;
     padding: 10px 20px;
-    border: none;
     border-radius: 10px;
     margin:0 auto;
     cursor: pointer;
+    -webkit-transition-duration: 0.3s; /*animacja przejścia*/
+    transition-duration: 0.3s;
+    -webkit-transition-property: background; /*animacja ma zastosowanie do tła*/
+    transition-property: background;
     
 }
 
 .hero__btn-call-to-action:hover, .hero__btn-call-to-action:focus {
-    background-color:grey;
-}
+    background-color: rgba(121, 121, 183, 0.5);
+    }
 
 @media screen and (max-width:620px ) {
     .hero__text--main {
