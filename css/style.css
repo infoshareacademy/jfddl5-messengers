@@ -1,9 +1,15 @@
+body, html{
+    margin: 0px;
+    padding: 0px;
+}
+
 .features__icon{grid-area: icon}
 .features__icon-description{grid-area: text}
 
 .features{
     display: flex;
     justify-content: center;
+    background-color: #2ecc71;
 }
 
 .features__container{
@@ -13,13 +19,13 @@
     max-width: 250px;
     max-height: 300px;
     grid-template-rows: "icon" "icon" "text";
-
-
     margin: 5px;
     width: 20vw;
-    background-color: rgba(220, 241, 245, 0.158);
-    border: 1px groove rgba(215, 217, 218, 0.158);
+    background-color: whitesmoke;    
+    border: 1px groove #7979b7;
     display: grid;
+    box-shadow: 2px 2px 10px;
+    
 }
 
 .features__icon{
@@ -31,25 +37,31 @@
     padding-top: 30px;
 }
 
+
 .features__icon-description{
     text-align: center;
     /* @TODO rethint it! */
     /* font-size: 2vw; */
     margin: 2.5vw 5px 0 5px;
     font-family: 'Roboto', sans-serif;
+ 
 }
 
 @media screen and (max-width: 800px){
     .features{
         flex-direction: column;
+        justify-content: center;
+
     }
     .features__container{
         flex-direction: row;
-        justify-content: flex-start;
+        justify-content: space-around;
         align-items: center;
         width: 95vw;
+        height: 70px;
         max-width: none;
-        display: flex
+        display: flex;
+        margin: 1vw;
     }
     .features__icon-description{
         font-size: 1.2em;
