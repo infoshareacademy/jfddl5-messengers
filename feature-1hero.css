@@ -15,7 +15,7 @@ html, body{
 .hero::after {
     content: "";
     position: absolute;
-    background-image: url("rawpixel-653764-unsplash.jpg");
+    background-image: url("slider1.jpg");
     background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
@@ -62,10 +62,15 @@ html, body{
     transition-duration: 0.3s;
     -webkit-transition-property: background; /*animacja ma zastosowanie do tła*/
     transition-property: background;
+    outline: none;
     
 }
 
-.hero__btn-call-to-action:hover, .hero__btn-call-to-action:focus {
+.hero__btn-call-to-action:hover,  {
+    background-color: rgba(121, 121, 183, 0.5);
+    }
+
+.hero__btn-call-to-action:focus {
     background-color: rgba(121, 121, 183, 0.5);
     }
 
