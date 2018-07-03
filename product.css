@@ -19,6 +19,7 @@
     margin: 60px auto 0;
     display: table;
     box-sizing: border-box;
+    height: 100vh;
 }
 
 .row {
