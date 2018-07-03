@@ -49,11 +49,11 @@ html, body{
 
 .hero__btn-call-to-action {
     background-color:#7979b7;
-    border: solid #7979b7;
+    border: none;
     color: white;
     font-size: 1.2em;
     text-align: center;
-    height: 10%;
+    height: 12%;
     padding: 10px 20px;
     border-radius: 10px;
     margin:0 auto;
