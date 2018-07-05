@@ -5,6 +5,15 @@ body, html {
     padding: 0;
 }
 
+.navbar__container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99999999999;
+}
+
+
 nav {
     opacity: 0.8;
 }

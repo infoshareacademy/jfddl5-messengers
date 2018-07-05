@@ -8,13 +8,6 @@
     letter-spacing: 1px;
 } */
 
-.navbar__container{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-}
-
 .container {
     width: 1000px;
     margin: 60px auto 0;
