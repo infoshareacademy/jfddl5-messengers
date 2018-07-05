@@ -15,6 +15,8 @@ window.addEventListener("load", function(){
     }
   })});
 
+
+  // http://www.forumweb.pl/javascript/skrypt-do-wyswietlania-tekstu-po-kliknieciu-w-dany-element,83856
   function onclickHandler()
 
   {
@@ -22,3 +24,4 @@ window.addEventListener("load", function(){
     alert('Akapit został kliknięty!');
 
   }
+  

@@ -11,11 +11,11 @@ body, html{
     grid-area: text
 }
 
-.features{
+#features{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #7979B7;
+    background: url('78666b5f.png');
     height: 100vh;
 }
 
@@ -31,7 +31,9 @@ body, html{
     display: grid;
     box-shadow: 2px 2px 10px;
 
-    -webkit-transition: all 1s ease; -moz-transition: all 1s ease; -o-transition: all 1s ease;
+    -webkit-transition: all 1s ease; 
+    -moz-transition: all 1s ease; 
+    -o-transition: all 1s ease;
     }
 
 .features__container:hover {
@@ -58,10 +60,6 @@ body, html{
     font-family: 'Roboto', sans-serif;
  
 }
-
-
-
-
 
 @media screen and (max-width: 800px){
     .features{
