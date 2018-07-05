@@ -9,16 +9,26 @@
         display: flex;
         flex-flow: row nowrap;
     }
+    .menu a:hover{background-color: black}
+    a:link {
+        text-decoration: none;
+
+    }
+    body{
+        margin: 0px;
+        padding: 0px;
+        
+    }
   </style>
 </head>
 <body>
 <nav class="menu">
     <ul>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Services</a></li>
-    <li><a href="#">Personal</a></li>
-    <li><a href="#">Courses</a></li>
-    <li><a href="#">Home</a></li>
+    <li><a class="menu__about" href="#">About</a></li>
+    <li><a class="menu__services" href="#">Services</a></li>
+    <li><a class="menu__some-links" href="#">Some link</a></li>
+    <li><a class="menu__some-link" href="#">Some link</a></li>
+    <li><a class="menu__some-link" href="#">Some link</a></li>
     </ul>
 </nav>
 <main>
