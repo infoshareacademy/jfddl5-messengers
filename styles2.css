@@ -7,16 +7,17 @@
 
 .team_container__maintext{
     text-align: center;
+    font-size:30px;
 }
 
 .team_container__main{
     display:flex;
     flex-direction: row;
     justify-content: space-around;
+    background:grey;
 }
 
 .team_container__box{
-    border: 2px solid #7979b7;
     padding:10px;
     margin:10px;
 }
@@ -35,6 +36,7 @@ li{
 .team_container__box__img img{
     width: 100%;
     height:auto;
+    border-radius:50%;
 
 }
 
