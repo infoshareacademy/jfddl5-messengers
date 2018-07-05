@@ -61,6 +61,8 @@ body, html{
 
 
 
+
+
 @media screen and (max-width: 800px){
     .features{
         flex-direction: column;

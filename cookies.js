@@ -14,3 +14,11 @@ window.addEventListener("load", function(){
       "link": "Kliknij po więcej"
     }
   })});
+
+  function onclickHandler()
+
+  {
+
+    alert('Akapit został kliknięty!');
+
+  }
