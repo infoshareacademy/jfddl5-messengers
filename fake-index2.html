@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,19 +5,37 @@
   <title>Lets make some conflicts :)</title>
   <style>
     .menu {
-        background: lightblue;
+        background-color: #1ab2ff;
         display: flex;
         flex-flow: row nowrap;
+        text-decoration: none;
+    }
+
+    ul.nav-list {
+        text-decoration: none;
+        justify-content: space-between;
+        list-style: none;
+    }
+
+    a:hover {
+        background-color:yellow;
+    }
+
+    .nav-list a{
+        text-decoration: none;
+        align-items: center;
     }
   </style>
 </head>
 <body>
 <nav class="menu">
+    <ul class="nav-list">
     <li><a href="#">Some link</a></li>
     <li><a href="#">Some link</a></li>
     <li><a href="#">Some link</a></li>
     <li><a href="#">Some link</a></li>
     <li><a href="#">Some link</a></li>
+</ul>
 </nav>
 <main>
     <h1>Merge resolving task</h1>
