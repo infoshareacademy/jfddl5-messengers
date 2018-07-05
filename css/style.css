@@ -15,7 +15,7 @@ body, html{
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url('78666b5f.png');
+    background: url('../78666b5f.png');
     height: 100vh;
 }
 
