@@ -212,8 +212,15 @@
         <section class="premiere_section__form_container">
             <h3>Zapisz się na premierę</h3>
     
-            <form action="" class="premiere_section__form"> 
-                <input type="email" class="premiere_section__form__email" id="email"  name="email" placeholder="Podaj adres e-mail"> <br>
+            <form action="https://emaillabs-sender.herokuapp.com/" method="POST" class="premiere_section__form"> 
+                <input type="email" class="premiere_section__form__email" id="email"  name="emails[]" "required" placeholder="Podaj adres e-mail"> 
+                <input type="hidden" name="subject" value="Tytuł">
+                <input type="hidden" name="message" value="Treść">
+                <input type="hidden" name="from" value="mateusz.choma@infoshareacademy.com">
+                <input type="hidden" name="fromName" value="Nazwa Apki">
+                <input type="hidden" name="redirect" value="https://google.com">
+                
+                <br>
                 <input type="checkbox" class="premiere_section__form__checkbox" name="" id="checked"><label for="checked">Zgadzam się na przetwarzanie danych osobowych</label><br>
                 <input type="submit"  class="premiere_section__form__button" value="Zapisz się">
             </form>
