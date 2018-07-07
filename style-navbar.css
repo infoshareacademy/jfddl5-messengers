@@ -11,33 +11,27 @@ body, html {
     left: 0;
     width: 100%;
     z-index: 99999999999;
-}
-
-
-nav {
     opacity: 0.8;
 }
 
-nav ul {
+.navbar__container__items {
     list-style: none;
     padding: 0;
     background: #000;
 }
 
-nav ul li a {
+.navbar__container__items__links a{
     color: #ddd;
+    font-weight: bolder;
+    text-transform: uppercase;
     text-decoration: none;
     padding: .8rem 1rem;
     display: block;
     line-height: 1;
 }
 
-nav ul li {
-    border-bottom: 1px solid #ddd;
-}
-
 /* styling logo */
-nav div:first-child {
+.navbar__container__logo {
     background: #000;
 }
 
@@ -51,19 +45,19 @@ nav div:first-child h1, nav ul {
     margin: 0;
 }
 
-nav ul li a:hover {
+.navbar__container__items__links a:hover {
     background: #7979b7;
     transition: 0.4s;
 }
 /* Responsive settings */
 @media only screen and (min-width: 30em) {
-    nav {
+    .navbar__container {
         display: flex;
         justify-content: space-between;
         background: #000;
         align-content: space-around;
     }
-    nav ul {
+    .navbar__container__items {
         display: flex;
         text-align: center;
         background: none;
@@ -79,15 +73,15 @@ nav ul li a:hover {
         height: 40px;
     }
 
-    nav ul li {
+    .navbar__container__items__links {
         border-bottom: none;
     }
 
-    na ul li a {
+    .navbar__container__items__links a {
         padding: 1.2rem 1rem;
     }
 
-    nav ul li a:hover {
+    .navbar__container__items__links a:hover {
         background: #7979b7;
         transition: 0.4s;
     }
