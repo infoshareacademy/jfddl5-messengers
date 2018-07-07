@@ -29,14 +29,16 @@
 
     <!-- NAVBAR -->
     <nav class="navbar__container">
-        <div>
+        <div class="navbar__container__logo">
             <h1><a href="#"><img src="chat.png" alt="logo"></a></h1>
         </div>
-       <ul>
-            <li><a href="#hero">Strona główna</a></li>
-            <li><a href="#team">O nas</a></li>
-            <li><a href="#descriptions">Funkcjonalność</a></li>
-            <li><a href="#premiere_section">Zapisy na premierę</a></li>
+       <ul class="navbar__container__items">
+            <li class="navbar__container__items__links"><a href="#hero">Strona główna</a></li>
+            <li class="navbar__container__items__links"><a href="#features">Funkcjonalność</a></li>
+            <li class="navbar__container__items__links"><a href="#descriptions">O aplikacji</a></li>
+            <li class="navbar__container__items__links" ><a href="#team">O nas</a></li>
+            <li class="navbar__container__items__links"><a href="#premiere_section">Zapisy na premierę</a></li>
+            
        </ul>
     </nav>
 
@@ -94,29 +96,19 @@
 
     </section>
 
-    <!-- DESCRIPTIONS -->
-    <section id="descriptions">
-    <div class="container">
-            <div class="row">
-                <div class="column animated fadeInLeft">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur illo earum sit, odit mollitia ipsum
-                        animi modi libero nihil tenetur molestiae velit provident quis. Eaque nesciunt esse molestias nisi fugit?</p>
-                </div>
-                <div class="column animated fadeInLeft">
-                    <i class="fas fa-comment"></i>
-                </div>
-            </div>
-            <div class="row">
-                <div class="column animated fadeInLeft">
-                        <i class="far fa-bell"></i>
-                </div>
-                <div class="column animated fadeInLeft">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur illo earum sit, odit mollitia ipsum
-                        animi modi libero nihil tenetur molestiae velit provident quis. Eaque nesciunt esse molestias nisi fugit?</p>
-                </div>
-            </div>
-
-    </section>
+     <!-- DESCRIPTIONS -->
+ <section id="descriptions" class="descriptions">
+    <div class="description">
+        <div class="description_item description_item-photo-1"> </div>
+        <div class="description_item description_item-content">Nowoczesna, bezpieczna aplikacja dla dojżałych użytkowników internetu chcących pozostać w stałym kontakcie z najbliższymi</div>
+    </div>
+    <div class="description description--reversed">
+        <div class="description_item description_item-photo-2"></div>
+        <div class="description_item description_item-content">Nasza aplikacja zapewnia łatwość instalacji i obsługi, udogodnienia w postaci możliwości powiększania tekstu, odpowiednio dostosowane przyciski, a w dodatkowych opcjach również funkcja SOS i przypomnienia. </div>
+    </div>
+    
+    
+</section>
 
     <!-- TEAM -->
     <section id="team" class="team_container">
