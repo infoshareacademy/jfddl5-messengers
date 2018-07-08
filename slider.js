@@ -1,9 +1,18 @@
 
 // Funkcja - "slider" która odejmuje klasę hero__image-cover--active (ma ona opacity ustawione na 1, pozostałe zdjęcia opacity 0) i dodaje ją do kolejnego zdjęcia
 
-function fadingOut() {
+
+function fadingOut(direction='right') {
     const slide = document.querySelector('.hero__image-cover--active')
-    const nextSlide = slide.nextElementSibling
+    let nextSlide
+    if (direction === 'right') {
+        nextSlide = slide.nextElementSibling}
+    else if (direction === 'left'){
+        nextSlide = slide.previousElementSibling   
+        }
+    else {
+
+    }
     slide.classList.remove('hero__image-cover--active')
     if(nextSlide && nextSlide.classList.contains('hero__image-cover')){
         nextSlide.classList.add('hero__image-cover--active')
@@ -13,47 +22,28 @@ function fadingOut() {
 
 }
 
-setInterval(fadingOut, 4000) 
+// Zatrzymanie slidera na zdarzenie "mouseover" i wznowienie na zdarzenie "mouseout"
 
-
-// Zatrzymanie funkcji setInterval w momencie najechania myszką na kontener z klasą "pause_slider" - nie działa, nie wiem dlaczego
-
-document.querySelector('.pause_slider').addEventListener('mouseover',function() {
-    let stopInterval = setInterval(fadingOut, 3000)
-   clearInterval(stopInterval)
+let stopIv = setInterval(fadingOut, 2000)
+document.querySelector('.pause_slider_left').addEventListener('mouseover',function() {
+    clearInterval(stopIv)
+})
+document.querySelector('.pause_slider_right').addEventListener('mouseover',function() {
+    clearInterval(stopIv)
+})
+document.querySelector('.pause_slider_left').addEventListener('mouseout',function() {
+    stopIv = setInterval(fadingOut, 2000)
+})
+document.querySelector('.pause_slider_right').addEventListener('mouseout',function() {
+    stopIv = setInterval(fadingOut, 2000)
 })
 
 
     
-// reakcja na kliknięcie użytkownika na obszar "strzałki slidera" - działa ale cały czas zmienia zdjęcia w kolejności do prawej 
+// reakcja na kliknięcie użytkownika na obszar "strzałki slidera" 
 
-document.querySelector('.hero__slider_button_right_container').addEventListener('click', fadingOut)
+document.querySelector('.hero__slider_button_right_container').addEventListener('click', function(){fadingOut('right')})
 
-document.querySelector('.hero__slider_button_left_container').addEventListener('click', fadingOut)
-
-
+document.querySelector('.hero__slider_button_left_container').addEventListener('click', function(){fadingOut('left')})
 
 
-
-// modyfikacja funkcji - "slider" Funkcja w której w zalezności od przekazanego parametru (1,2 czyli prawo lub lewo) zmiennej nextSlide przypisujemy kolejne lub poprzednie rodzeństwo
-// funkcja nie działa
-
-
-// function fadingOut(direction) {
-//     const slide = document.querySelector('.hero__image-cover--active')
-//     let nextSlide
-//     if (direction === 1) {
-//         nextSlide = slide.nextElementSibling}
-//     else {
-//         nextSlide = slide.previousElementSibling   
-//         }
-//     slide.classList.remove('hero__image-cover--active')
-//         if(nextSlide && nextSlide.classList.contains('hero__image-cover')){
-//             nextSlide.classList.add('hero__image-cover--active')
-//          }else{
-//          document.querySelector('.hero__image-cover').classList.add('hero__image-cover--active')
-//         }
-//     }
-// document.querySelector('.hero__slider_button_right_container').addEventListener('click', fadingOut(1))
-
-// document.querySelector('.hero__slider_button_left_container').addEventListener('click', fadingOut(2))
