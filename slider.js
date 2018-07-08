@@ -1,24 +1,18 @@
-// function fadingOut() {
-//     let slides = document.querySelectorAll('.hero__image-cover');
-//     var i = 0;
-//     for (i = 0; i < slides.length; i++) {
-//         setTimeout(function() { document.querySelectorAll('.hero__image-cover')[i].style.opacity = '0'; }, 1000);
-//     }
-// };
 
-// function fadingOut() {
-//     let slides = document.querySelectorAll('.hero__image-cover');
-//     var i = 0;
-//     for (i = 0; i < slides.length; i++) {
-//         slides[i].style.opacity = '0';
-//     }
-// };
+// Funkcja - "slider" która odejmuje klasę hero__image-cover--active (ma ona opacity ustawione na 1, pozostałe zdjęcia opacity 0) i dodaje ją do kolejnego zdjęcia
 
-// setTimeout(fadingOut, 1000);
 
-function fadingOut1() {
+function fadingOut(direction='right') {
     const slide = document.querySelector('.hero__image-cover--active')
-    const nextSlide = slide.nextElementSibling
+    let nextSlide
+    if (direction === 'right') {
+        nextSlide = slide.nextElementSibling}
+    else if (direction === 'left'){
+        nextSlide = slide.previousElementSibling   
+        }
+    else {
+
+    }
     slide.classList.remove('hero__image-cover--active')
     if(nextSlide && nextSlide.classList.contains('hero__image-cover')){
         nextSlide.classList.add('hero__image-cover--active')
@@ -28,4 +22,28 @@ function fadingOut1() {
 
 }
 
-setInterval(fadingOut1, 3000)
+// Zatrzymanie slidera na zdarzenie "mouseover" i wznowienie na zdarzenie "mouseout"
+
+let stopIv = setInterval(fadingOut, 2000)
+document.querySelector('.pause_slider_left').addEventListener('mouseover',function() {
+    clearInterval(stopIv)
+})
+document.querySelector('.pause_slider_right').addEventListener('mouseover',function() {
+    clearInterval(stopIv)
+})
+document.querySelector('.pause_slider_left').addEventListener('mouseout',function() {
+    stopIv = setInterval(fadingOut, 2000)
+})
+document.querySelector('.pause_slider_right').addEventListener('mouseout',function() {
+    stopIv = setInterval(fadingOut, 2000)
+})
+
+
+    
+// reakcja na kliknięcie użytkownika na obszar "strzałki slidera" 
+
+document.querySelector('.hero__slider_button_right_container').addEventListener('click', function(){fadingOut('right')})
+
+document.querySelector('.hero__slider_button_left_container').addEventListener('click', function(){fadingOut('left')})
+
+
