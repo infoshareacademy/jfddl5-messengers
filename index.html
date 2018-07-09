@@ -2,8 +2,9 @@
 <html lang="pl">
 
 <head>
-        <link rel="icon" href="chat.png" type="image/x-icon"/>
-    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css"
+    />
     <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
     <script src="cookies.js"></script>
     <meta charset="UTF-8">
@@ -17,13 +18,14 @@
     <link href="styles2.css" rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=latin-ext"
+        rel="stylesheet">
     <link rel="stylesheet" href="product.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
         crossorigin="anonymous">
     <link rel="stylesheet" href="normalize.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500&amp;subset=latin-ext" rel="stylesheet">
-    <link rel="stylesheet" href="animate.css">    
+    <link rel="stylesheet" href="animate.css">
 </head>
 
 <body>
@@ -31,25 +33,39 @@
     <!-- NAVBAR -->
     <nav class="navbar__container">
         <div class="navbar__container__logo">
-            <h1><a href="#"><img src="chat.png" alt="logo"></a></h1>
+            <h1>
+                <a href="#">
+                    <img src="chat.png" alt="logo">
+                </a>
+            </h1>
         </div>
-       <ul class="navbar__container__items">
-            <li class="navbar__container__items__links"><a href="#hero">Strona główna</a></li>
-            <li class="navbar__container__items__links"><a href="#features">Funkcjonalność</a></li>
-            <li class="navbar__container__items__links"><a href="#descriptions">O aplikacji</a></li>
-            <li class="navbar__container__items__links" ><a href="#team">O nas</a></li>
-            <li class="navbar__container__items__links"><a href="#premiere_section">Zapisy na premierę</a></li>
-            
-       </ul>
+        <ul class="navbar__container__items">
+            <li class="navbar__container__items__links">
+                <a href="#hero">Strona główna</a>
+            </li>
+            <li class="navbar__container__items__links">
+                <a href="#features">Funkcjonalność</a>
+            </li>
+            <li class="navbar__container__items__links">
+                <a href="#descriptions">O aplikacji</a>
+            </li>
+            <li class="navbar__container__items__links">
+                <a href="#team">O nas</a>
+            </li>
+            <li class="navbar__container__items__links">
+                <a href="#premiere_section">Zapisy na premierę</a>
+            </li>
+
+        </ul>
     </nav>
 
     <!-- HERO -->
     <section id="hero" class="hero">
         <div class="hero__slider_button_left_container pause_slider_left">
-                <i class="fas fa-chevron-left hero__slider_button__left"></i>  
+            <i class="fas fa-chevron-left hero__slider_button__left"></i>
         </div>
         <div class="hero__slider_button_right_container pause_slider_right">
-                <i class="fas fa-chevron-right hero__slider_button__right"></i>
+            <i class="fas fa-chevron-right hero__slider_button__right"></i>
         </div>
         <div class="hero__image-cover hero__image-cover--active hero__image-cover--1"></div>
         <div class="hero__image-cover hero__image-cover--2"></div>
@@ -57,8 +73,11 @@
         <!-- <div class="hero__image-cover hero__image-cover--4"></div> -->
         <div class="hero__img">
             <h1 class="hero__text hero__text--main">Messengers</h1>
-            <h2 class="hero__text hero__text--description">Najlepszy komunikator dla Ciebie,<br> bądź z bliskimi zawsze w kontakcie</h2>
-            <a href="#premiere_section"><button class="hero__btn-call-to-action">Zapisz się na premierę</button></a>
+            <h2 class="hero__text hero__text--description">Najlepszy komunikator dla Ciebie,
+                <br> bądź z bliskimi zawsze w kontakcie</h2>
+            <a href="#premiere_section">
+                <button class="hero__btn-call-to-action">Zapisz się na premierę</button>
+            </a>
         </div>
     </section>
 
@@ -69,71 +88,74 @@
             <h3>Sprawdź co nas wyróżnia</h3>
         </div>
         <div class="features__list">
-        <figure class="features__container features__container--usability">
-            <i class="fas fa-child"></i>
-            <figcaption class="features__icon-description">
-                Łatwość obsługi
-            </figcaption>
-        </figure>
+            <figure class="features__container features__container--usability">
+                <i class="fas fa-child"></i>
+                <figcaption class="features__icon-description">
+                    Łatwość obsługi
+                </figcaption>
+            </figure>
 
-        <figure class="features__container features__container--bigger-text">
-            <i class="fas fa-font"></i>
-            <figcaption class="features__icon-description">
-                Powiększanie tekstu
-            </figcaption>
-        </figure>
+            <figure class="features__container features__container--bigger-text">
+                <i class="fas fa-font"></i>
+                <figcaption class="features__icon-description">
+                    Powiększanie tekstu
+                </figcaption>
+            </figure>
 
-        <figure class="features__container features__container--big-buttons">
-            <i class="fas fa-search-plus"></i>
-            <figcaption class="features__icon-description">
-                Duże przyciski
-            </figcaption>
-        </figure>
+            <figure class="features__container features__container--big-buttons">
+                <i class="fas fa-search-plus"></i>
+                <figcaption class="features__icon-description">
+                    Duże przyciski
+                </figcaption>
+            </figure>
 
-        <figure class="features__container features__container--sos-function">
-            <i class="fas fa-bullhorn"></i>
-            <figcaption class="features__icon-description">
-                Funkcja SOS
-            </figcaption>
-        </figure>
-    </div>
+            <figure class="features__container features__container--sos-function">
+                <i class="fas fa-bullhorn"></i>
+                <figcaption class="features__icon-description">
+                    Funkcja SOS
+                </figcaption>
+            </figure>
+        </div>
 
     </section>
 
-     <!-- DESCRIPTIONS -->
- <section id="descriptions" class="descriptions">
-    <div class="description">
-        <div class="description_item description_item-photo-1"> </div>
-        <div class="description_item description_item-content">Nowoczesna, bezpieczna aplikacja dla dojżałych użytkowników internetu chcących pozostać w stałym kontakcie z najbliższymi</div>
-    </div>
-    <div class="description description--reversed">
-        <div class="description_item description_item-photo-2"></div>
-        <div class="description_item description_item-content">Nasza aplikacja zapewnia łatwość instalacji i obsługi, udogodnienia w postaci możliwości powiększania tekstu, odpowiednio dostosowane przyciski, a w dodatkowych opcjach również funkcja SOS i przypomnienia. </div>
-    </div>
-    
-    
-</section>
+    <!-- DESCRIPTIONS -->
+    <section id="descriptions" class="descriptions">
+        <div class="description">
+            <div class="description_item description_item-photo-1"> </div>
+            <div class="description_item description_item-content">Nowoczesna, bezpieczna aplikacja dla dojżałych użytkowników internetu chcących pozostać w stałym kontakcie z
+                najbliższymi
+            </div>
+        </div>
+        <div class="description description--reversed">
+            <div class="description_item description_item-photo-2"></div>
+            <div class="description_item description_item-content">Nasza aplikacja zapewnia łatwość instalacji i obsługi, udogodnienia w postaci możliwości powiększania tekstu,
+                odpowiednio dostosowane przyciski, a w dodatkowych opcjach również funkcja SOS i przypomnienia. </div>
+        </div>
 
-     <!-- TEAM -->
-     <section id="team" class="team_container">
+
+    </section>
+
+    <!-- TEAM -->
+    <section id="team" class="team_container">
         <div class="team_container__maintext">
             <h2>Oto nasz team</h2>
         </div>
         <div class="team_container__main">
             <article class="team_container__box">
                 <figure class="team_container__box__img">
-                    <img src="001.jpg" alt="Agata Okólska" class="animated slideInUp">
+                    <img src="001.jpg" alt="Agata Okólska" class="animation">
                 </figure>
                 <figcaption class="team_container__box__description">
                     <h3>Agata Okólska</h3>
                     <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
                     <ul class="team_container__box__description__links">
-                        <li class ='team_container__box__description__links__item'>
+                        <li class='team_container__box__description__links__item'>
                             <a href="https://github.com/agataokolska">
                                 <i class="fab fa-github"></i>
                             </a>
                         </li>
-                        <li class ='team_container__box__description__links__item'>
+                        <li class='team_container__box__description__links__item'>
                             <a href="https://www.linkedin.com/in/agata-ok%C3%B3lska-408956164/">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
@@ -144,18 +166,18 @@
 
             <article class="team_container__box">
                 <figure class="team_container__box__img">
-                    <img src="002.jpg" alt="Jarek Zbiciak" class="animated slideInUp">
+                    <img src="002.jpg" alt="Jarek Zbiciak" class="animation">
                 </figure>
                 <figcaption class="team_container__box__description">
                     <h3>Jarek Zbiciak</h3>
                     <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum </p>
                     <ul class="team_container__box__description__links">
-                        <li class ='team_container__box__description__links__item'>
+                        <li class='team_container__box__description__links__item'>
                             <a href="https://github.com/JarekZ92">
                                 <i class="fab fa-github"></i>
                             </a>
                         </li>
-                        <li class ='team_container__box__description__links__item'>
+                        <li class='team_container__box__description__links__item'>
                             <a href="#">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
@@ -166,18 +188,18 @@
 
             <article class="team_container__box">
                 <figure class="team_container__box__img">
-                    <img src="003.jpg" alt="Robert Piotrowski" class="animated slideInUp">
+                    <img src="003.jpg" alt="Robert Piotrowski" class="animation">
                 </figure>
                 <figcaption class="team_container__box__description">
                     <h3>Robert Piotrowski</h3>
                     <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
                     <ul class="team_container__box__description__links">
-                        <li class ='team_container__box__description__links__item'>
+                        <li class='team_container__box__description__links__item'>
                             <a href="https://github.com/199359">
                                 <i class="fab fa-github"></i>
                             </a>
                         </li>
-                        <li class ='team_container__box__description__links__item'>
+                        <li class='team_container__box__description__links__item'>
                             <a href="https://www.linkedin.com/in/robert-piotrowski-156b2312b/">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
@@ -188,18 +210,18 @@
 
             <article class="team_container__box">
                 <figure class="team_container__box__img">
-                    <img src="004.jpg" alt="Krzysztof Stefański" class="animated slideInUp">
+                    <img src="004.jpg" alt="Krzysztof Stefański" class="animation">
                 </figure>
                 <figcaption class="team_container__box__description">
                     <h3>Krzysztof Stefański</h3>
                     <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
                     <ul class="team_container__box__description__links">
-                        <li class ='team_container__box__description__links__item'>
+                        <li class='team_container__box__description__links__item'>
                             <a href="https://github.com/juniorWebks">
                                 <i class="fab fa-github"></i>
                             </a>
                         </li>
-                        <li class ='team_container__box__description__links__item'>
+                        <li class='team_container__box__description__links__item'>
                             <a href="https://www.linkedin.com/in/krzysztof-stefa%C5%84ski-907041153/">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
@@ -207,27 +229,29 @@
                     </ul>
                 </figcaption>
             </article>
-            </div>
+        </div>
     </section>
 
 
 
-     <!-- SIGN UP FORM -->
-     <section id="premiere_section">
+    <!-- SIGN UP FORM -->
+    <section id="premiere_section">
         <section class="premiere_section__form_container">
             <h3>Zapisz się na premierę</h3>
-    
-            <form action="https://emaillabs-sender.herokuapp.com/" method="POST" class="premiere_section__form"> 
-                <input type="email" class="premiere_section__form__email" id="email"  name="emails[]" "required" placeholder="Podaj adres e-mail"> 
+
+            <form action="https://emaillabs-sender.herokuapp.com/" method="POST" class="premiere_section__form">
+                <input type="email" class="premiere_section__form__email" id="email" name="emails[]" "required" placeholder="Podaj adres e-mail">
                 <input type="hidden" name="subject" value="Tytuł">
                 <input type="hidden" name="message" value="Treść">
                 <input type="hidden" name="from" value="mateusz.choma@infoshareacademy.com">
                 <input type="hidden" name="fromName" value="Nazwa Apki">
                 <input type="hidden" name="redirect" value="http://www.messengers.jfddl5.is-academy.pl/thank_you.html">
-                
+
                 <br>
-                <input type="checkbox" class="premiere_section__form__checkbox" name="" id="checked"><label for="checked">Zgadzam się na przetwarzanie danych osobowych</label><br>
-                <input type="submit"  class="premiere_section__form__button" value="Zapisz się">
+                <input type="checkbox" class="premiere_section__form__checkbox" name="" id="checked">
+                <label for="checked">Zgadzam się na przetwarzanie danych osobowych</label>
+                <br>
+                <input type="submit" class="premiere_section__form__button" value="Zapisz się">
             </form>
             <p>Twoje dane będą przechowywane jedynie w celu przekazania informacji o premierze naszej aplikacji</p>
         </section>
@@ -237,7 +261,22 @@
 
     </footer>
 
-    <script src="slider.js"></script>   
+    <script src="slider.js"></script>
+    <script src="in-view.js"></script>
+
+    <script>
+        inView('#team')
+            .on('enter', () => {
+                const teamPhotos = document.querySelectorAll('.animation')
+
+                for (let i = 0; i < teamPhotos.length; i++) {
+                    teamPhotos[i].classList.add('animated')
+                    teamPhotos[i].classList.add('slideInUp')
+                }
+            })
+
+    
+    </script>
 </body>
 
 </html>
