@@ -19,12 +19,16 @@ body, html{
     margin-bottom: 9vh;
     color: #7979b7;
 }
+.features__container--main-text h3{
+    font-size: 2.5em;
+}
+
+.features__container--main-text p{
+    font-size: 4em;
+}
 
 .features__header{
     position: relative;
-    
-    /* top: -35vh;
-    left: 40vw; */
 }
 
 .features{
