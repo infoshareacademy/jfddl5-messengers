@@ -6,7 +6,7 @@
     background-color: #7979b7;
   } */
   .descriptions{
-      
+      background-color: #ecebeb;
   }
   
   .description {
@@ -14,6 +14,7 @@
     grid-auto-rows: 50vh;
     grid-template-columns: 1fr 1fr;
     grid-template-areas: "item-photo item-content";
+
   }
   
   .description--reversed {
@@ -35,12 +36,8 @@
   }
 
   .description_item-content {
-    grid-area: item-content;
-    text-align: center;
-    align-content: center;
-    
-    
-    
+    margin: 10vw;
+    text-align: justify;
   }
   
   @media (max-width: 798px) {
