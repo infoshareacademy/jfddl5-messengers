@@ -14,6 +14,7 @@
 
 .team_container__maintext{
     text-align: center;
+    
 }
 
 .team_container__maintext h2{
@@ -25,6 +26,7 @@
     display:flex;
     flex-direction: row;
     justify-content: space-around;
+    
 }
 
 .team_container__box{
