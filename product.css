@@ -1,88 +1,58 @@
-/* body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', 'sans-serif';
-    font-weight: lighter;
-    font-size: 15px;
-    line-height: 24px;
-    letter-spacing: 1px;
-} */
-
-.navbar__container{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-}
-
-.container {
-    width: 1000px;
-    margin: 60px auto 0;
-    display: table;
+/* .description_item {
+    display: flex;
     align-items: center;
     justify-content: center;
-    box-sizing: border-box;
-    height: 100vh;
-}
+    color: white;
+    background-color: #7979b7;
+  } */
+  .descriptions{
+      background-color: #ecebeb;
+  }
+  
+  .description {
+    display: grid;
+    grid-auto-rows: 50vh;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "item-photo item-content";
 
-.row {
-    transition: 1s;
-}
+  }
+  
+  .description--reversed {
+    grid-template-areas: "item-content item-photo ";
+  }
+  
+  .description_item-photo-1 {
+    grid-area: item-photo;
+    background-image: url("zdj_feature1.jpeg");
+    background-size: cover;
+    padding:100px;
+  }
+  
+  .description_item-photo-2 {
+    grid-area: item-photo;
+    background-image: url("zdj_feature2.jpeg");
+    background-size: cover;
+    padding:100px;
+  }
 
-.column {
-    display: table-cell;
-    padding: 30px;
-    width: 33.3%;
-    text-align: center;
-    vertical-align: middle;
-    transition: 1s;
-}
-
-.row:nth-child(1) .column:nth-child(odd) {
-    background: #7979b7;
-}
-
-.row:nth-child(1) .column:nth-child(2) {
-    background: #6c6ca4;
-}
-
-.row:nth-child(2) .column:nth-child(odd) {
-    background: #6c6ca4;
-}
-
-.row:nth-child(2) .column:nth-child(2) {
-    background: #7979b7;
-}
-
-@media(max-width: 760px) {
-    .container {
-        margin: 0;
-        padding: 10px 0;
-        width: 100%;
+  .description_item-content {
+    margin: 10vw;
+    text-align: justify;
+  }
+  
+  @media (max-width: 798px) {
+    .description {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "item-photo"
+        "item-content";
     }
-
-    .column {
-        width: 100%;
-        display: block;
-        box-sizing: border-box;
+  
+    .description--reversed {
+      grid-template-areas:
+        "item-photo"
+        "item-content";
     }
-}
-
-.row:nth-child(1) .column:nth-child(1){
-    animation-delay: 1s;
-}
-
-.row:nth-child(1) .column:nth-child(2){
-    animation-delay: 1.3s;
-}
-
-.row:nth-child(2) .column:nth-child(1){
-    animation-delay: 1.6s;
-}
-
-.row:nth-child(2) .column:nth-child(2){
-    animation-delay: 1.9s;
-}
-
-
-
+  }
+  

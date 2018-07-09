@@ -3,20 +3,43 @@ body, html{
     padding: 0px;
 }
 
-.features__icon{
-    grid-area: icon
+.features__list i{
+    grid-area: icon;
 }
 
 .features__icon-description{
     grid-area: text
 }
 
+.features__container--main-text{
+    text-align: center;
+    margin-bottom: 9vh;
+    color: #7979b7;
+    font-weight: bold;
+}
+
+.features__header{
+    position: relative;
+    
+    /* top: -35vh;
+    left: 40vw; */
+}
+
 .features{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #7979B7;
+    background-color: #f3f3f3;
     height: 100vh;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.features__list{
+    display: flex;
+    flex-direction: row;
 }
 
 .features__container{
@@ -26,19 +49,30 @@ body, html{
     grid-template-rows: "icon" "icon" "text";
     margin: 5px;
     width: 20vw;
-    background-color: whitesmoke;    
-    border: 1px groove #7979b7;
+    background-color: #f8f8f8;    
     display: grid;
-    box-shadow: 2px 2px 10px;
-}
+    -webkit-transition: all 1s ease; 
+    -moz-transition: all 1s ease; 
+    -o-transition: all 1s ease;
+    }
 
-.features__icon{
+.features__container:hover {
+    -o-transition: all 0.6s;
+    -moz-transition: all 0.6s;
+    -webkit-transition: all 0.6s;
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    }
+
+.features__list i{
     width: auto;
     max-width: 100px;
     height: 10vw;
     margin: 5vw;
     align-self: center;
     padding-top: 30px;
+    font-size: 10vw;
 }
 
 .features__icon-description{
@@ -52,18 +86,25 @@ body, html{
     .features{
         flex-direction: column;
         justify-content: center;
+        align-content: space-around;
+    }
+
+    .features__list{
+        flex-direction: column;
     }
 
     .features__container{
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
         width: 95vw;
         height: 70px;
         max-width: none;
         display: flex;
         margin: 0.5vw 0px 0px 2vw;
+        margin: 2vh;
     }
+
 
     .features__icon-description{
         font-size: 1.2em;
@@ -75,13 +116,22 @@ body, html{
     .features__icon{
         padding-top: 0px;
     }
+
+    .features__list i{
+        position: relative;
+        bottom: 2vh;
+    }
+
+    .features__container--main-text{
+        margin-bottom: 4vh;
+    }
 }
 
 @media screen and (min-width: 1507px){
     .features__container{
         justify-content: space-evenly;
-        margin: 0px;
-        grid-template-rows: 'icon' 'icon' 'text';
+        margin: 0.5vw 0px 0px 2vw;
+        align-content: center;
     }
     
     .features__icon{

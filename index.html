@@ -16,101 +16,101 @@
     <link href="styles2.css" rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto&amp;subset=latin-ext" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=latin-ext" rel="stylesheet">
     <link rel="stylesheet" href="product.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
         crossorigin="anonymous">
+    <link rel="stylesheet" href="normalize.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500&amp;subset=latin-ext" rel="stylesheet">
-    <link rel="stylesheet" href="animation.css">
-</head>
+    </head>
 
 <body>
 
     <!-- NAVBAR -->
     <nav class="navbar__container">
-        <div>
+        <div class="navbar__container__logo">
             <h1><a href="#"><img src="chat.png" alt="logo"></a></h1>
         </div>
-       <ul>
-            <li><a href="#hero">Strona główna</a></li>
-            <li><a href="#team">O nas</a></li>
-            <li><a href="#descriptions">Funkcjonalność</a></li>
-            <li><a href="#premiere_section">Zapisy na premierę</a></li>
+       <ul class="navbar__container__items">
+            <li class="navbar__container__items__links"><a href="#hero">Strona główna</a></li>
+            <li class="navbar__container__items__links"><a href="#features">Funkcjonalność</a></li>
+            <li class="navbar__container__items__links"><a href="#descriptions">O aplikacji</a></li>
+            <li class="navbar__container__items__links" ><a href="#team">O nas</a></li>
+            <li class="navbar__container__items__links"><a href="#premiere_section">Zapisy na premierę</a></li>
+            
        </ul>
     </nav>
 
-
     <!-- HERO -->
     <section id="hero" class="hero">
+        <div class="hero__slider_button_left_container pause_slider_left">
+                <i class="fas fa-chevron-left hero__slider_button__left"></i>  
+        </div>
+        <div class="hero__slider_button_right_container pause_slider_right">
+                <i class="fas fa-chevron-right hero__slider_button__right"></i>
+        </div>
+        <div class="hero__image-cover hero__image-cover--active hero__image-cover--1"></div>
+        <div class="hero__image-cover hero__image-cover--2"></div>
+        <div class="hero__image-cover hero__image-cover--3"></div>
+        <!-- <div class="hero__image-cover hero__image-cover--4"></div> -->
         <div class="hero__img">
             <h1 class="hero__text hero__text--main">Messengers</h1>
-            <h2 class="hero__text hero__text--description">krótki tekst o tym jak fantastyczna jest nasza,<br> najnowsza aplikacja</h2>
+            <h2 class="hero__text hero__text--description">Najlepszy komunikator dla Ciebie,<br> bądż z bliskimi zawsze w kontakcie</h2>
             <a href="#premiere_section"><button class="hero__btn-call-to-action">Zapisz się na premierę</button></a>
         </div>
     </section>
 
     <!-- FEATURES -->
     <section id="features" class="features">
-        
-        <figure class="features__container">
-            <img class="features__icon features__icon--accesability" src="icons/accessible-icon.svg"
-                alt="Ulatwienia dostepu">
-
+        <div class="features__container--main-text">
+            <h1>Aplikacja dla każdego</h1>
+            <p>Sprawdź co nas wyróżnia</p>
+        </div>
+        <div class="features__list">
+        <figure class="features__container features__container--usability">
+            <i class="fas fa-child"></i>
             <figcaption class="features__icon-description">
-                Ułatwienia dostępu
+                Łatwość obsługi
             </figcaption>
         </figure>
 
-        <figure class="features__container">
-            <img class="features__icon features__icon--android" src="icons/android.svg"
-                alt="Obsluga Android Play">
+        <figure class="features__container features__container--bigger-text">
+            <i class="fas fa-font"></i>
             <figcaption class="features__icon-description">
-                Obsługa Android Play
+                Powiększanie tekstu
             </figcaption>
         </figure>
 
-        <figure class="features__container">
-            <img class="features__icon features__icon--ios" src="icons/app-store-ios.svg"
-                alt="Obsluga iOS Store">
+        <figure class="features__container features__container--big-buttons">
+            <i class="fas fa-search-plus"></i>
             <figcaption class="features__icon-description">
-                Obsługa iOS Store
+                Duże przyciski
             </figcaption>
         </figure>
 
-        <figure class="features__container">
-            <img class="features__icon features__icon--credit-card" src="icons/credit-card.svg"
-                alt="Platnosci karta">
+        <figure class="features__container features__container--sos-function">
+            <i class="fas fa-bullhorn"></i>
             <figcaption class="features__icon-description">
-                Płatności kartą
+                Funkcja SOS
             </figcaption>
         </figure>
-        
+    </div>
 
     </section>
 
-    <!-- DESCRIPTIONS -->
-    <section id="descriptions">
-    <div class="container">
-            <div class="row">
-                <div class="column animated fadeInLeft">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur illo earum sit, odit mollitia ipsum
-                        animi modi libero nihil tenetur molestiae velit provident quis. Eaque nesciunt esse molestias nisi fugit?</p>
-                </div>
-                <div class="column animated fadeInLeft">
-                    <i class="fas fa-comment"></i>
-                </div>
-            </div>
-            <div class="row">
-                <div class="column animated fadeInLeft">
-                        <i class="far fa-bell"></i>
-                </div>
-                <div class="column animated fadeInLeft">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur illo earum sit, odit mollitia ipsum
-                        animi modi libero nihil tenetur molestiae velit provident quis. Eaque nesciunt esse molestias nisi fugit?</p>
-                </div>
-            </div>
-
-    </section>
+     <!-- DESCRIPTIONS -->
+ <section id="descriptions" class="descriptions">
+    <div class="description">
+        <div class="description_item description_item-photo-1"> </div>
+        <div class="description_item description_item-content">Nowoczesna, bezpieczna aplikacja dla dojżałych użytkowników internetu chcących pozostać w stałym kontakcie z najbliższymi</div>
+    </div>
+    <div class="description description--reversed">
+        <div class="description_item description_item-photo-2"></div>
+        <div class="description_item description_item-content">Nasza aplikacja zapewnia łatwość instalacji i obsługi, udogodnienia w postaci możliwości powiększania tekstu, odpowiednio dostosowane przyciski, a w dodatkowych opcjach również funkcja SOS i przypomnienia. </div>
+    </div>
+    
+    
+</section>
 
     <!-- TEAM -->
     <section id="team" class="team_container">
@@ -124,14 +124,14 @@
                 </figure>
                 <figcaption class="team_container__box__description">
                     <h3>Agata Okólska</h3>
-                    <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
-                    <ul>
-                        <li>
+                    <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum apis na premierę Strona główna Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
+                    <ul class="team_container__box__description__links">
+                        <li class ='team_container__box__description__links__item'>
                             <a href="#">
-                                <i class="fab fa-git"></i>
+                                <i class="fab fa-github"></i>
                             </a>
                         </li>
-                        <li>
+                        <li class ='team_container__box__description__links__item'>
                             <a href="#">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
@@ -145,37 +145,15 @@
                     <img src="agata.jpg" alt="">
                 </figure>
                 <figcaption class="team_container__box__description">
-                    <h3>Robert Piotrowski</h3>
-                    <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
-                    <ul>
-                        <li>
+                    <h3>Agata Okólska</h3>
+                    <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum apis na premierę Strona główna Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
+                    <ul class="team_container__box__description__links">
+                        <li class ='team_container__box__description__links__item'>
                             <a href="#">
-                                <i class="fab fa-git"></i>
+                                <i class="fab fa-github"></i>
                             </a>
                         </li>
-                        <li>
-                            <a href="#">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </figcaption>
-            </article>
-
-            <article class="team_container__box">
-                <figure class="team_container__box__img">
-                    <img src="kris.jpg" alt="">
-                </figure>
-                <figcaption class="team_container__box__description">
-                    <h3>Jarek Zbiciak</h3>
-                    <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
-                    <ul>
-                        <li>
-                            <a href="#">
-                                <i class="fab fa-git"></i>
-                            </a>
-                        </li>
-                        <li>
+                        <li class ='team_container__box__description__links__item'>
                             <a href="#">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
@@ -186,18 +164,40 @@
 
             <article class="team_container__box">
                 <figure class="team_container__box__img">
-                    <img src="kris.jpg" alt="">
+                    <img src="agata.jpg" alt="">
                 </figure>
                 <figcaption class="team_container__box__description">
-                    <h3>Krzysztof Stefański</h3>
-                    <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
-                    <ul>
-                        <li>
+                    <h3>Agata Okólska</h3>
+                    <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum apis na premierę Strona główna Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
+                    <ul class="team_container__box__description__links">
+                        <li class ='team_container__box__description__links__item'>
                             <a href="#">
-                                <i class="fab fa-git"></i>
+                                <i class="fab fa-github"></i>
                             </a>
                         </li>
-                        <li>
+                        <li class ='team_container__box__description__links__item'>
+                            <a href="#">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </figcaption>
+            </article>
+
+            <article class="team_container__box">
+                <figure class="team_container__box__img">
+                    <img src="agata.jpg" alt="">
+                </figure>
+                <figcaption class="team_container__box__description">
+                    <h3>Agata Okólska</h3>
+                    <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum apis na premierę Strona główna Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
+                    <ul class="team_container__box__description__links">
+                        <li class ='team_container__box__description__links__item'>
+                            <a href="#">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </li>
+                        <li class ='team_container__box__description__links__item'>
                             <a href="#">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
@@ -212,8 +212,15 @@
         <section class="premiere_section__form_container">
             <h3>Zapisz się na premierę</h3>
     
-            <form action="" class="premiere_section__form"> 
-                <input type="email" class="premiere_section__form__email" id="email"  name="email" placeholder="Podaj adres e-mail"> <br>
+            <form action="https://emaillabs-sender.herokuapp.com/" method="POST" class="premiere_section__form"> 
+                <input type="email" class="premiere_section__form__email" id="email"  name="emails[]" "required" placeholder="Podaj adres e-mail"> 
+                <input type="hidden" name="subject" value="Tytuł">
+                <input type="hidden" name="message" value="Treść">
+                <input type="hidden" name="from" value="mateusz.choma@infoshareacademy.com">
+                <input type="hidden" name="fromName" value="Nazwa Apki">
+                <input type="hidden" name="redirect" value="https://google.com">
+                
+                <br>
                 <input type="checkbox" class="premiere_section__form__checkbox" name="" id="checked"><label for="checked">Zgadzam się na przetwarzanie danych osobowych</label><br>
                 <input type="submit"  class="premiere_section__form__button" value="Zapisz się">
             </form>
@@ -225,6 +232,8 @@
     <footer>
 
     </footer>
+
+    <script src="slider.js"></script>   
 </body>
 
 </html>
