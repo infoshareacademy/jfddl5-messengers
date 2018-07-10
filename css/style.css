@@ -1,6 +1,7 @@
 body, html{
     margin: 0px;
     padding: 0px;
+    overflow-x: hidden;
 }
 
 .features__list i{
