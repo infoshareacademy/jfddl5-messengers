@@ -1,6 +1,7 @@
 body, html{
     margin: 0px;
     padding: 0px;
+    overflow-x: hidden;
 }
 
 .features__list i{
@@ -94,7 +95,7 @@ body, html{
         flex-direction: column;
         justify-content: center;
         align-content: space-around;
-        height: 70vh;
+        height: 100vh;
     }
 
     .features__container:hover {
@@ -158,4 +159,12 @@ body, html{
     .features__icon-description{
         margin-top: 8vh;
     }
+}
+
+.features__container--main-text h3{
+    font-size: 1.5em;
+}
+
+.features__container--main-text p{
+    font-size: 2em;
 }
