@@ -1,60 +1,59 @@
-// This is the self-invoking function expression
-// it is here to provide scope for our variables 
-// and functions inside game, ant to not pollute
-// global scope
-(function Game (selector) {
+
+function Game(selector) {
+    this.container = document.querySelector(selector)
     
-    // VARS
-    // place for "global" variables that you will use in whole game
-    // like score, or time
-    // they aren't really global - because of self-invoking function
 
-    // FUNCTIONS
-    function init(container) {
-        // this function should be called when we want to init game
-        // it accepts 1 argument - dom node of the container
-        // where game should be rendered, eg it can be body of document
+}
+// VARS
+// place for "global" variables that you will use in whole game
+// like score, or time
+// they aren't really global - because of self-invoking function
 
-        // this function should render first frame of game and set all
-        // of the variables like time to game end that werent predefinied
-    }
+// FUNCTIONS
+Game.prototype.init = function (container) {
+    // this function should be called when we want to init game
+    // it accepts 1 argument - dom node of the container
+    // where game should be rendered, eg it can be body of document
 
-    function render() {
-        // this function will be responsible of rendering new content 
-        // in the container when game ticks or player interacts
-    }
+    // this function should render first frame of game and set all
+    // of the variables like time to game end that werent predefinied
+}
 
-    // here you can put some functions taht renders only parts of the game 
-    // and will be used in render function
+Game.prototype.render = function () {
+    // this function will be responsible of rendering new content 
+    // in the container when game ticks or player interacts
+}
 
-    // here you will attach all events listeners like oncliks or keydowns
-    function attachEventListeners() { }
+// here you can put some functions taht renders only parts of the game 
+// and will be used in render function
 
-    // move should be another function called eg. when event is fired
-    // it is quite obvious that move bakwards is a move fovard with minus sign ;)
-    function move() { }
+// here you will attach all events listeners like oncliks or keydowns
+Game.prototype.attachEventListeners = function () { }
 
-    // in this fucntion you can do all stuff that needs to be repeated
-    // you can invoke this function in an interval
-    // you can set that interval in init function
-    function gameTick() { }
+// move should be another function called eg. when event is fired
+// it is quite obvious that move bakwards is a move fovard with minus sign ;)
+Game.prototype.move = function () { }
 
-    // below functions are self-describing ;)
-    function incScore() { }
-    function displayScore() { }
+// in this fucntion you can do all stuff that needs to be repeated
+// you can invoke this function in an interval
+// you can set that interval in init function
+Game.prototype.gameTick = function () { }
 
-    function decTime() { }
-    function displayTIme() { }
+// below functions are self-describing ;)
+Game.prototype.incScore = function () { }
+Game.prototype.displayScore = function () { }
 
-    // invoked when game ends (you can check if time elepsed eg. in gameTick function)
-    function endGame() { }
+Game.prototype.decTime = function () { }
+Game.prototype.displayTIme = function () { }
 
-    // HELPERS
+// invoked when game ends (you can check if time elepsed eg. in gameTick function)
+Game.prototype.endGame = function () { }
 
-    // here put some functions that are not directly itto the game
-    // but will help to do some general stuff - like make an array of ...
+// HELPERS
 
-    // START GAME
-    // document.body is an example of the container for the game
-    init(document.body)
-})()
+// here put some functions that are not directly itto the game
+// but will help to do some general stuff - like make an array of ...
+
+const game1 = new Game('.game-container')
+console.log(game1)
+
