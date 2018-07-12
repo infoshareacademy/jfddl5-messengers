@@ -1,8 +1,30 @@
 
 function Game(selector) {
     this.container = document.querySelector(selector)
-    
-
+    this.gameBoard = null
+    this.scoreContainer = null
+    this.deckOfCards = [
+        {
+            front: "A",
+            visible: false,
+            complete: false
+          },
+          {
+            front: "A",
+            visible: false,
+            complete: false
+          },
+          {
+            front: "B",
+            visible: false,
+            complete: false
+          },
+          {
+            front: "B",
+            visible: false,
+            complete: false
+          }
+        ]
 }
 // VARS
 // place for "global" variables that you will use in whole game
