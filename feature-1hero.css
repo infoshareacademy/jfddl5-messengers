@@ -10,6 +10,7 @@ html, body{
     justify-content: center;
     flex-direction: column;
     color: white;
+    
   }
 
 .hero__slider_button_left_container {
@@ -30,7 +31,7 @@ html, body{
 
 .hero__slider_button__left {
     font-size: 3em;
-    padding: 1em;
+    padding: 0;
     opacity: 1;
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
     width: 20px;
@@ -62,7 +63,7 @@ html, body{
 
 .hero__slider_button__right {
     font-size: 3em;
-    padding: 1em;
+    padding: 0;
     opacity: 1;
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
     width: 20px;
@@ -147,6 +148,7 @@ html, body{
     font-size: 7em;
     margin-bottom: 0;
     text-shadow: 1px 1px #525050;
+    font-family: 'Roboto', sans-serif;
 }
 
 
@@ -158,6 +160,7 @@ html, body{
     margin: 0px 0px 30px 0px;
     color: white;
     text-shadow: 1px 1px grey;
+    font-family: 'Roboto', sans-serif;
 }
 
 .hero__btn-call-to-action {
@@ -176,6 +179,7 @@ html, body{
     -webkit-transition-property: background; /*animacja ma zastosowanie do tła*/
     transition-property: background;
     outline: none;
+    font-family: 'Roboto', sans-serif;
     
 }
 

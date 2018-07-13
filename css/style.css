@@ -1,28 +1,35 @@
 body, html{
     margin: 0px;
     padding: 0px;
+    overflow-x: hidden;
 }
 
 .features__list i{
     grid-area: icon;
+    display: flex;
+    justify-content: center;
 }
 
 .features__icon-description{
     grid-area: text
+
 }
 
 .features__container--main-text{
     text-align: center;
     margin-bottom: 9vh;
     color: #7979b7;
-    font-weight: bold;
+}
+.features__container--main-text h3{
+    font-size: 2.5em;
+}
+
+.features__container--main-text p{
+    font-size: 4em;
 }
 
 .features__header{
     position: relative;
-    
-    /* top: -35vh;
-    left: 40vw; */
 }
 
 .features{
@@ -76,8 +83,9 @@ body, html{
 }
 
 .features__icon-description{
+    align-self: flex-start;
     text-align: center;
-    margin: 2.5vw 5px 0 5px;
+    margin: 2vw 5px 0 5px;
     font-family: 'Roboto', sans-serif;
  
 }
@@ -87,7 +95,17 @@ body, html{
         flex-direction: column;
         justify-content: center;
         align-content: space-around;
+        height: 100vh;
     }
+
+    .features__container:hover {
+        -o-transition: none;
+        -moz-transition: none;
+        -webkit-transition: none;
+        -moz-transform: none;
+        -o-transform: none;
+        -webkit-transform: none;
+        }
 
     .features__list{
         flex-direction: column;
@@ -101,7 +119,6 @@ body, html{
         height: 70px;
         max-width: none;
         display: flex;
-        margin: 0.5vw 0px 0px 2vw;
         margin: 2vh;
     }
 
@@ -110,7 +127,7 @@ body, html{
         font-size: 1.2em;
         word-wrap: break-word; 
         text-align: left;
-        margin-top: 0px;
+        margin-top: 4vh;
     }
 
     .features__icon{
@@ -120,6 +137,7 @@ body, html{
     .features__list i{
         position: relative;
         bottom: 2vh;
+        margin: 0.5vw 0px 0px 2vw;
     }
 
     .features__container--main-text{
@@ -130,7 +148,6 @@ body, html{
 @media screen and (min-width: 1507px){
     .features__container{
         justify-content: space-evenly;
-        margin: 0.5vw 0px 0px 2vw;
         align-content: center;
     }
     
@@ -140,6 +157,14 @@ body, html{
     }
     
     .features__icon-description{
-        margin-top: 40px;
+        margin-top: 8vh;
     }
+}
+
+.features__container--main-text h3{
+    font-size: 1.5em;
+}
+
+.features__container--main-text p{
+    font-size: 2em;
 }
