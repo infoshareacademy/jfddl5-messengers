@@ -11,6 +11,37 @@
 
         
     </div>
-    <script src="game.js"></script>
+    <!-- <script src="game.js"></script> -->
+    <script>
+        const deckOfCards = [
+    {
+        front: "A",
+        visible: false,
+        complete: false
+      },
+      {
+        front: "A",
+        visible: false,
+        complete: false
+      },
+      {
+        front: "B",
+        visible: false,
+        complete: false
+      },
+      {
+        front: "B",
+        visible: false,
+        complete: false
+      }
+    ]
+        cards=[]
+        const container = document.querySelector('game-container')
+        deckOfCards.forEach(function(deckOfCards, index){
+            let div = document.createElement('aaa' + index)
+            cards[index]=div
+        })
+        
+    </script>
 </body>
 </html>
