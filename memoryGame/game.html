@@ -111,7 +111,7 @@
             board.style.flexWrap='wrap'
             board.style.justifyContent='center'
             board.className='game-board'
-            console.log(board)
+          
             this.container.appendChild(board)
             this.gameBoard = board
 
@@ -126,20 +126,51 @@
             card.style.margin='1vh 1vh 1vh 1vh'
             card.style.justifyContent='center'
             card.style.alignItems='center'
+            card.className='card-'+index
             // // card.style.margin='1px solid white'
             // card.className='card'
             card.innerHTML= newGame.deckOfCards[index].front
             // console.log(card)
             // document.querySelector('.game-board').innerHTML = card
             document.querySelector('.game-board').appendChild(card)
+            document.querySelector('.card-'+index).addEventListener('click', function(){
+                
+                if (newGame.deckOfCards[index].visible===true){
+                newGame.deckOfCards[index].visible=false
+                document.querySelector('.card-'+index).style.backgroundColor='black'
+                document.querySelector('.card-'+index).innerHTML=''
+                }
+                else{
+                newGame.deckOfCards[index].visible=true
+                
+                document.querySelector('.card-'+index).style.backgroundColor='green'
+                card.innerHTML= newGame.deckOfCards[index].front
+                
+                
+                for (let i=0; i<newGame.deckOfCards.length; i++){
+                        if(newGame.deckOfCards[i].visible===true && i!==index){
+                            newGame.deckOfCards[i].complete=true
+                            newGame.deckOfCards[index].complete=true
+                            console.log(newGame.deckOfCards[i])
+                            console.log(newGame.deckOfCards[index])
+                        }
+                    }       
+                }
+
+
+            })
         })
         }
 
 
         Game.prototype.render = function(){
             // document.querySelector('.game-container').innerText = 'aaa'
-
-
+            this.deckOfCards.forEach(function(element, index, array){
+                if(newGame.deckOfCards[index].visible===false){
+                    document.querySelector('.card-'+index).style.backgroundColor='black'
+                    document.querySelector('.card-'+index).innerHTML=''
+                }
+            })
 
 
         }
