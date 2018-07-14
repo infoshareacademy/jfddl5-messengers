@@ -33,6 +33,66 @@
                     front: "B",
                     visible: false,
                     complete: false
+                  },
+                  {
+                    front: "C",
+                    visible: false,
+                    complete: false
+                  },
+                  {
+                    front: "C",
+                    visible: false,
+                    complete: false
+                  },
+                  {
+                    front: "D",
+                    visible: false,
+                    complete: false
+                  },
+                  {
+                    front: "D",
+                    visible: false,
+                    complete: false
+                  },
+                  {
+                    front: "E",
+                    visible: false,
+                    complete: false
+                  },
+                  {
+                    front: "E",
+                    visible: false,
+                    complete: false
+                  },
+                  {
+                    front: "F",
+                    visible: false,
+                    complete: false
+                  },
+                  {
+                    front: "F",
+                    visible: false,
+                    complete: false
+                  },
+                  {
+                    front: "G",
+                    visible: false,
+                    complete: false
+                  },
+                  {
+                    front: "G",
+                    visible: false,
+                    complete: false
+                  },
+                  {
+                    front: "H",
+                    visible: false,
+                    complete: false
+                  },
+                  {
+                    front: "F",
+                    visible: false,
+                    complete: false
                   }
                 ]
         }
@@ -48,29 +108,32 @@
             board.style.height='70vw'
             board.style.backgroundColor='yellow'
             board.style.display='flex'
+            board.style.flexWrap='wrap'
             board.style.justifyContent='center'
             board.className='game-board'
             console.log(board)
-            board.innerHTML = '<p>kmk</p'
             document.querySelector('.game-container').innerHTML = board
             this.container.appendChild(board)
             this.gameBoard = board
 
 
             
-
-            let card = document.createElement('div')
-            
-            
+            this.deckOfCards.forEach(function(){
+            let card = document.createElement('div')        
             card.style.width='15vw'
             card.style.height='15vw'
+            card.style.display='flex'
             card.style.backgroundColor='green'
+            card.style.margin='1vw 1vw 1vw 1vw'
+            card.style.justifyContent='center'
+            card.style.alignItems='center'
             // // card.style.margin='1px solid white'
             // card.className='card'
             card.innerHTML='<p>aaa</p>'
             // console.log(card)
             // document.querySelector('.game-board').innerHTML = card
             document.querySelector('.game-board').appendChild(card)
+        })
         }
 
 
