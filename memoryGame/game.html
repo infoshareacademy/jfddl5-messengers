@@ -8,9 +8,86 @@
 </head>
 <body>
     <div class="game-container">
+<script>
+        function Game(selector) {
+            this.container = document.querySelector('body')
+            this.gameBoard = null
+            this.scoreContainer = null
+            this.deckOfCards = [
+                {
+                    front: "A",
+                    visible: false,
+                    complete: false
+                  },
+                  {
+                    front: "A",
+                    visible: false,
+                    complete: false
+                  },
+                  {
+                    front: "B",
+                    visible: false,
+                    complete: false
+                  },
+                  {
+                    front: "B",
+                    visible: false,
+                    complete: false
+                  }
+                ]
+        }
 
-        
+        Game.prototype.init = function(){
+            this.makeGameBoard()
+            this.render()
+        }
+
+        Game.prototype.makeGameBoard = function(){
+            let board = document.createElement('div')
+            board.style.width='70vw'
+            board.style.height='70vw'
+            board.style.backgroundColor='yellow'
+            board.style.display='flex'
+            board.style.justifyContent='center'
+            board.className='game-board'
+            console.log(board)
+            board.innerHTML = '<p>kmk</p'
+            document.querySelector('.game-container').innerHTML = board
+            this.container.appendChild(board)
+            this.gameBoard = board
+
+
+            
+
+            let card = document.createElement('div')
+            
+            
+            card.style.width='15vw'
+            card.style.height='15vw'
+            card.style.backgroundColor='green'
+            // // card.style.margin='1px solid white'
+            // card.className='card'
+            card.innerHTML='<p>aaa</p>'
+            // console.log(card)
+            // document.querySelector('.game-board').innerHTML = card
+            document.querySelector('.game-board').appendChild(card)
+        }
+
+
+        Game.prototype.render = function(){
+            // document.querySelector('.game-container').innerText = 'aaa'
+
+
+
+
+        }
+
+        let newGame = new Game
+        newGame.init(document.querySelector('body'))
+
+
+        </script>
     </div>
-    <script src="game.js"></script>
+    <!-- <script src="game.js"></script> -->
 </body>
 </html>
