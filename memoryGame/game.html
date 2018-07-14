@@ -104,8 +104,8 @@
 
         Game.prototype.makeGameBoard = function(){
             let board = document.createElement('div')
-            board.style.width='70vw'
-            board.style.height='70vw'
+            board.style.width='70vh'
+            board.style.height='70vh'
             board.style.backgroundColor='yellow'
             board.style.display='flex'
             board.style.flexWrap='wrap'
@@ -119,11 +119,11 @@
             
             this.deckOfCards.forEach(function(element, index){
             let card = document.createElement('div')        
-            card.style.width='15vw'
-            card.style.height='15vw'
+            card.style.width='15vh'
+            card.style.height='15vh'
             card.style.display='flex'
             card.style.backgroundColor='green'
-            card.style.margin='1vw 1vw 1vw 1vw'
+            card.style.margin='1vh 1vh 1vh 1vh'
             card.style.justifyContent='center'
             card.style.alignItems='center'
             // // card.style.margin='1px solid white'
