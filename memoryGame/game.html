@@ -115,18 +115,13 @@
             const card = createCard(index);
             gameBoard.appendChild(card)
             const cardRef = document.querySelector('.card-'+index);
-            cardRef.addEventListener('click', function() {
+            cardRef.addEventListener('click', cardClick);
+            function cardClick () {
                 if (newGame.deckOfCards[index].visible===true) {
-                  newGame.deckOfCards[index].visible=false
-                  cardRef.style.backgroundColor='black'
-                  cardRef.innerHTML=''
+                  makeCardInactive(cardRef, index)
                 }
-                else{
-                  newGame.deckOfCards[index].visible=true
-                
-                  cardRef.style.backgroundColor='green'
-                  card.innerHTML= newGame.deckOfCards[index].front
-                
+                else {
+                  makeCardActive(cardRef, index)
                   for (let i=0; i<newGame.deckOfCards.length; i++){
                         if(newGame.deckOfCards[i].visible===true && i!==index){
                             newGame.deckOfCards[i].complete=true
@@ -136,7 +131,19 @@
                         }
                     }       
                 }
-            })
+            }
+
+            function makeCardInactive(cardRef, index) {
+                newGame.deckOfCards[index].visible = false
+                cardRef.style.backgroundColor = 'black'
+                cardRef.innerHTML = ''
+            }
+
+            function makeCardActive(cardRef, index) {
+                newGame.deckOfCards[index].visible = true
+                cardRef.style.backgroundColor = 'green'
+                card.innerHTML = newGame.deckOfCards[index].front
+            }
         })
         }
 
