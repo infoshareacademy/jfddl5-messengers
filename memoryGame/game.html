@@ -99,6 +99,7 @@
 
         Game.prototype.init = init;
         Game.prototype.makeGameBoard = makeGameBoard;
+        Game.prototype.setupBoard = setupBoard;
         Game.prototype.render = render;
 
         function init(){
@@ -106,19 +107,8 @@
             this.render()
         }
 
-        function makeGameBoard(){
-            let board = document.createElement('div')
-            board.style.width='70vh'
-            board.style.height='70vh'
-            board.style.backgroundColor='yellow'
-            board.style.display='flex'
-            board.style.flexWrap='wrap'
-            board.style.justifyContent='center'
-            board.className='game-board'
-          
-            this.container.appendChild(board)
-            this.gameBoard = board
-            
+        function makeGameBoard() {
+          this.setupBoard();
             this.deckOfCards.forEach(function(element, index){
             let card = document.createElement('div')        
             card.style.width='15vh'
@@ -162,6 +152,20 @@
 
             })
         })
+        }
+
+        function setupBoard() {
+            const board = document.createElement('div')
+            board.style.width='70vh'
+            board.style.height='70vh'
+            board.style.backgroundColor='yellow'
+            board.style.display='flex'
+            board.style.flexWrap='wrap'
+            board.style.justifyContent='center'
+            board.className='game-board'
+          
+            this.container.appendChild(board)
+            this.gameBoard = board
         }
 
         function render(){
