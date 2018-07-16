@@ -110,9 +110,8 @@
 
         function makeGameBoard() {
           this.setupBoard();
-            this.deckOfCards.forEach(function(element, index){
+          this.deckOfCards.forEach(function(element, index){
             const card = createCard(index);
-            // document.querySelector('.game-board').innerHTML = card
             document.querySelector('.game-board').appendChild(card)
             document.querySelector('.card-'+index).addEventListener('click', function(){
                 
@@ -167,15 +166,11 @@
             card.style.justifyContent='center'
             card.style.alignItems='center'
             card.className='card-'+index
-            // // card.style.margin='1px solid white'
-            // card.className='card'
             card.innerHTML= newGame.deckOfCards[index].front
-            // console.log(card)
             return card;
         }
 
         function render(){
-            // document.querySelector('.game-container').innerText = 'aaa'
             this.deckOfCards.forEach(function(element, index, array){
                 if(newGame.deckOfCards[index].visible===false){
                     document.querySelector('.card-'+index).style.backgroundColor='black'
