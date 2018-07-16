@@ -110,24 +110,24 @@
 
         function makeGameBoard() {
           this.setupBoard();
-          this.deckOfCards.forEach(function(element, index){
+          const gameBoard = document.querySelector('.game-board');
+          this.deckOfCards.forEach(function(element, index) {
             const card = createCard(index);
-            document.querySelector('.game-board').appendChild(card)
-            document.querySelector('.card-'+index).addEventListener('click', function(){
-                
-                if (newGame.deckOfCards[index].visible===true){
-                newGame.deckOfCards[index].visible=false
-                document.querySelector('.card-'+index).style.backgroundColor='black'
-                document.querySelector('.card-'+index).innerHTML=''
+            gameBoard.appendChild(card)
+            const cardRef = document.querySelector('.card-'+index);
+            cardRef.addEventListener('click', function() {
+                if (newGame.deckOfCards[index].visible===true) {
+                  newGame.deckOfCards[index].visible=false
+                  cardRef.style.backgroundColor='black'
+                  cardRef.innerHTML=''
                 }
                 else{
-                newGame.deckOfCards[index].visible=true
+                  newGame.deckOfCards[index].visible=true
                 
-                document.querySelector('.card-'+index).style.backgroundColor='green'
-                card.innerHTML= newGame.deckOfCards[index].front
+                  cardRef.style.backgroundColor='green'
+                  card.innerHTML= newGame.deckOfCards[index].front
                 
-                
-                for (let i=0; i<newGame.deckOfCards.length; i++){
+                  for (let i=0; i<newGame.deckOfCards.length; i++){
                         if(newGame.deckOfCards[i].visible===true && i!==index){
                             newGame.deckOfCards[i].complete=true
                             newGame.deckOfCards[index].complete=true
@@ -136,8 +136,6 @@
                         }
                     }       
                 }
-
-
             })
         })
         }
