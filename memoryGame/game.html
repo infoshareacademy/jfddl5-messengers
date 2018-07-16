@@ -97,12 +97,16 @@
                 ]
         }
 
-        Game.prototype.init = function(){
+        Game.prototype.init = init;
+        Game.prototype.makeGameBoard = makeGameBoard;
+        Game.prototype.render = render;
+
+        function init(){
             this.makeGameBoard()
             this.render()
         }
 
-        Game.prototype.makeGameBoard = function(){
+        function makeGameBoard(){
             let board = document.createElement('div')
             board.style.width='70vh'
             board.style.height='70vh'
@@ -114,8 +118,6 @@
           
             this.container.appendChild(board)
             this.gameBoard = board
-
-
             
             this.deckOfCards.forEach(function(element, index){
             let card = document.createElement('div')        
@@ -162,8 +164,7 @@
         })
         }
 
-
-        Game.prototype.render = function(){
+        function render(){
             // document.querySelector('.game-container').innerText = 'aaa'
             this.deckOfCards.forEach(function(element, index, array){
                 if(newGame.deckOfCards[index].visible===false){
@@ -171,14 +172,9 @@
                     document.querySelector('.card-'+index).innerHTML=''
                 }
             })
-
-
         }
-
         let newGame = new Game
         newGame.init(document.querySelector('body'))
-
-
         </script>
     </div>
     <!-- <script src="game.js"></script> -->
