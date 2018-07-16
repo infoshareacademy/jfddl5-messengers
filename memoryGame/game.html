@@ -13,6 +13,10 @@
             this.container = document.querySelector('body')
             this.gameBoard = null
             this.scoreContainer = null
+            this.makeGameBoard = this.makeGameBoard.bind(this);
+            this.createCard = this.createCard.bind(this);
+            this.makeCardActive = this.makeCardActive.bind(this);
+            this.makeCardInactive = this.makeCardInactive.bind(this);
             this.deckOfCards = [
                 {
                     front: "A",
@@ -97,10 +101,16 @@
                 ]
         }
 
+        Game.prototype.colors = {
+          cardBg: 'green',
+          inactiveCardBg: 'black'
+        };
         Game.prototype.init = init;
         Game.prototype.makeGameBoard = makeGameBoard;
         Game.prototype.setupBoard = setupBoard;
         Game.prototype.createCard = createCard;
+        Game.prototype.makeCardActive = makeCardActive;
+        Game.prototype.makeCardInactive = makeCardInactive;
         Game.prototype.render = render;
 
         function init(){
@@ -111,17 +121,17 @@
         function makeGameBoard() {
           this.setupBoard();
           const gameBoard = document.querySelector('.game-board');
-          this.deckOfCards.forEach(function(element, index) {
-            const card = createCard(index);
+          this.deckOfCards.forEach((element, index) => {
+            const card = this.createCard(index);
             gameBoard.appendChild(card)
             const cardRef = document.querySelector('.card-'+index);
-            cardRef.addEventListener('click', cardClick);
-            function cardClick () {
+
+            const cardClick = () => {
                 if (newGame.deckOfCards[index].visible===true) {
-                  makeCardInactive(cardRef, index)
+                  this.makeCardInactive(cardRef, index)
                 }
                 else {
-                  makeCardActive(cardRef, index)
+                  this.makeCardActive(cardRef, card, index)
                   for (let i=0; i<newGame.deckOfCards.length; i++){
                         if(newGame.deckOfCards[i].visible===true && i!==index){
                             newGame.deckOfCards[i].complete=true
@@ -133,18 +143,20 @@
                 }
             }
 
-            function makeCardInactive(cardRef, index) {
-                newGame.deckOfCards[index].visible = false
-                cardRef.style.backgroundColor = 'black'
-                cardRef.innerHTML = ''
-            }
-
-            function makeCardActive(cardRef, index) {
-                newGame.deckOfCards[index].visible = true
-                cardRef.style.backgroundColor = 'green'
-                card.innerHTML = newGame.deckOfCards[index].front
-            }
+            cardRef.addEventListener('click', cardClick);
         })
+        }
+
+        function makeCardInactive(cardRef, index) {
+          newGame.deckOfCards[index].visible = false
+          cardRef.style.backgroundColor = this.colors.inactiveCardBg
+          cardRef.innerHTML = ''
+        }
+
+        function makeCardActive(cardRef, card, index) {
+          newGame.deckOfCards[index].visible = true
+          cardRef.style.backgroundColor = this.colors.cardBg
+          card.innerHTML = newGame.deckOfCards[index].front
         }
 
         function setupBoard() {
@@ -166,7 +178,7 @@
             card.style.width='15vh'
             card.style.height='15vh'
             card.style.display='flex'
-            card.style.backgroundColor='green'
+            card.style.backgroundColor=this.colors.cardBg
             card.style.margin='1vh 1vh 1vh 1vh'
             card.style.justifyContent='center'
             card.style.alignItems='center'
@@ -176,10 +188,10 @@
         }
 
         function render(){
-            this.deckOfCards.forEach(function(element, index, array){
+            this.deckOfCards.forEach((element, index, array) => {
                 if(newGame.deckOfCards[index].visible===false){
-                    document.querySelector('.card-'+index).style.backgroundColor='black'
-                    document.querySelector('.card-'+index).innerHTML=''
+                    document.querySelector('.card-'+index).style.backgroundColor = this.colors.inactiveCardBg
+                    document.querySelector('.card-'+index).innerHTML = ''
                 }
             })
         }
