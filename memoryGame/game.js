@@ -1,31 +1,24 @@
 
+function Card(front) {
+    this.front = front
+    this.visible = false
+    this.complete = false
+}
+
+const newCardArray = function (newArrayLength) {
+    return Array(newArrayLength).fill({}).map(function (item, index) {
+        return new Card(index + 1)
+    })
+}
+
+
 function Game(selector) {
     this.container = document.querySelector(selector)
     this.gameBoard = null
     this.scoreContainer = null
-    this.deckOfCards = [
-        {
-            front: "A",
-            visible: false,
-            complete: false
-          },
-          {
-            front: "A",
-            visible: false,
-            complete: false
-          },
-          {
-            front: "B",
-            visible: false,
-            complete: false
-          },
-          {
-            front: "B",
-            visible: false,
-            complete: false
-          }
-        ]
+    this.deckOfCards = newCardArray(8).concat(newCardArray(8))
 }
+
 // VARS
 // place for "global" variables that you will use in whole game
 // like score, or time
@@ -33,6 +26,9 @@ function Game(selector) {
 
 // FUNCTIONS
 Game.prototype.init = function (container) {
+
+
+  this.shuffle(this.deckOfCards)
     // this function should be called when we want to init game
     // it accepts 1 argument - dom node of the container
     // where game should be rendered, eg it can be body of document
@@ -76,6 +72,9 @@ Game.prototype.endGame = function () { }
 // here put some functions that are not directly itto the game
 // but will help to do some general stuff - like make an array of ...
 
-const game1 = new Game('.game-container')
-console.log(game1)
-
+Game.prototype.shuffle = function (array) {
+  for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+  }
+}
