@@ -67,6 +67,13 @@ Game.prototype.endGame = function () { }
 // here put some functions that are not directly itto the game
 // but will help to do some general stuff - like make an array of ...
 
+Game.prototype.shuffle = function (array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+
 const game1 = new Game('.game-container')
 console.log(game1)
 

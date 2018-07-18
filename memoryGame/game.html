@@ -11,43 +11,37 @@
 <body>
   <div class="game-container">
     <script>
+      function Card(front) {
+        this.front = front
+        this.visible = false
+        this.complete = false
+      }
+
+      const newCardArray = function (newArrayLength) {
+        return Array(newArrayLength).fill({}).map(function (item, index) {
+          return new Card(index + 1)
+        })
+      }
+
       function Game(selector) {
-        this.container = selector ? document.querySelector(selector) : document.querySelector('body')
+        this.container = document.querySelector(selector)
         this.gameBoard = null
         this.scoreContainer = null
-
-        this.deckOfCards = [
-          {
-            front: "A",
-            visible: true,
-            complete: false
-          },
-          {
-            front: "A",
-            visible: true,
-            complete: false
-          },
-          {
-            front: "B",
-            visible: false,
-            complete: false
-          },
-          {
-            front: "B",
-            visible: false,
-            complete: false
-          }
-        ]
+        this.deckOfCards = newCardArray(8).concat(newCardArray(8))
 
         this.numberOfCardsOnBoardSide = Math.sqrt(this.deckOfCards.length)
         this.cardDimension = (100 / this.numberOfCardsOnBoardSide) + '%'
 
         this.init()
+
       }
+
+
 
       Game.prototype.init = function () {
         this.makeGameBoard()
         this.render()
+        this.shuffle(this.deckOfCards)
       }
 
       Game.prototype.makeGameBoard = function () {
@@ -99,6 +93,13 @@
         this.deckOfCards[index].visible = true
 
         this.render()
+      }
+
+      Game.prototype.shuffle = function (array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
       }
 
       const newGame = new Game('body')
