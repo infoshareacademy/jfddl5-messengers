@@ -90,7 +90,17 @@
       }
 
       Game.prototype.toggleCard = function (index) {
-        this.deckOfCards[index].visible = true
+        let countOfVisibleCard = this.deckOfCards.filter(function (card) {
+          return card.complete === false && card.visible === true
+        }).length
+        if (countOfVisibleCard > 1)
+          if (this.checkIfVisibleCardIsAMatch()) this.completeVisibleCard()
+        this.showAllCards
+        this.deckOfCards[index] = Object.assign({}, this.deckOfCards[index], {
+          visible: true
+        });
+
+        if(countUnconpletedCards() === 0) alert('Wygrałeś!')
 
         this.render()
       }
