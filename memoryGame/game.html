@@ -15,9 +15,6 @@
         this.front = front
         this.visible = false
         this.complete = false
-
-
-
       }
 
       const newCardArray = function (newArrayLength) {
@@ -34,8 +31,6 @@
 
         this.numberOfCardsOnBoardSide = Math.sqrt(this.deckOfCards.length)
         this.cardDimension = (100 / this.numberOfCardsOnBoardSide) + '%'
-        this.timeIntervalId = null
-        this.time = 0
 
         this.init()
 
@@ -47,7 +42,6 @@
         this.makeGameBoard()
         this.render()
         this.shuffle(this.deckOfCards)
-        this.startCountingTime()
       }
 
       Game.prototype.makeGameBoard = function () {
@@ -58,6 +52,7 @@
         board.style.display = 'flex'
         board.style.flexWrap = 'wrap'
         board.style.justifyContent = 'center'
+
         board.className = 'game-board'
 
         this.container.appendChild(board)
@@ -72,7 +67,6 @@
         })
       }
 
-
       Game.prototype.renderSingleCard = function (card, index) {
         const cardElement = document.createElement('div')
         cardElement.style.width = this.cardDimension
@@ -81,7 +75,6 @@
 
         if (card.visible) {
           cardElement.innerText = card.front
-
         }
 
         if (card.complete) {
@@ -107,7 +100,6 @@
           visible: true
         });
 
-        if(countUnconpletedCards() === 0) alert('Wygrałeś!')
 
         this.render()
       }
@@ -117,13 +109,6 @@
           const j = Math.floor(Math.random() * (i + 1));
           [array[i], array[j]] = [array[j], array[i]];
         }
-      }
-
-       Game.prototype.startCountingTime = function () {
-        this.timeIntervalId = setInterval(() => {
-          this.time = this.time + 1
-        }, 1000)
-
       }
 
       const newGame = new Game('body')
