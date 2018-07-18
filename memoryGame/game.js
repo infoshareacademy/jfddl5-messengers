@@ -1,32 +1,23 @@
+function Card(front) {
+    this.front = front
+    this.visible = false
+    this.complete = false
+}
+
+const newCardArray = function (newArrayLength) {
+    return Array(newArrayLength).fill({}).map(function (item, index) {
+        return new Card(index + 1)
+    })
+}
+
 
 function Game(selector) {
     this.container = document.querySelector(selector)
     this.gameBoard = null
     this.scoreContainer = null
-    this.deckOfCards = [
-        {
-            front: "A",
-            visible: false,
-            complete: false
-          },
-          {
-            front: "A",
-            visible: false,
-            complete: false
-          },
-          {
-            front: "B",
-            visible: false,
-            complete: false
-          },
-          {
-            front: "B",
-            visible: false,
-            complete: false
-          }
-        ]
+    this.deckOfCards = newCardArray(8).concat(newCardArray(8))
 }
-// VARS
+// VARSgit a
 // place for "global" variables that you will use in whole game
 // like score, or time
 // they aren't really global - because of self-invoking function
