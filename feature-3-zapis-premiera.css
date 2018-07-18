@@ -1,0 +1,110 @@
+#premiere_section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #7979b7;
+    height: 100vh;
+}
+
+.premiere_section__form_container {
+    /* width: 60%; */
+    min-width: 30vw;
+    max-width: 50vw;
+    /* max-height: 40%; */
+    text-align: center;
+    padding: 3em;
+    margin: 5em;
+    background-color: white;
+    border-radius: 60px; 
+}
+
+.premiere_section__form_container h3 {
+    font-size: 2.5em;
+    font-family: 'Roboto', sans-serif;
+}
+.premiere_section__form {
+    text-align: center;
+}
+
+.premiere_section__form__email {
+    padding: 1em 0em;
+    margin: 0 0 1em 0;
+    width: 100%;
+    border-radius: 20px;
+    border: 2px solid #7979b7;
+    text-align: center;
+    font-size: 1em;
+    outline:none;
+}
+.premiere_section__form__checkbox {
+    padding: 1em 0em;
+    /* margin: 0 0 2em 0; */
+    color: #7979b7;
+    cursor: pointer;
+}
+
+.premiere_section__form__button {
+    background-color:#7979b7;
+    /* border: solid #7979b7; */
+    border: none;
+    color: white;
+    font-size: 1.2em;
+    text-align: center;
+    height: 10%;
+    padding: 10px 20px;
+    border-radius: 15px;
+    margin:2em auto;
+    cursor: pointer;
+    -webkit-transition-duration: 0.3s; /*animacja przejścia*/
+    transition-duration: 0.3s;
+    -webkit-transition-property: background; /*animacja ma zastosowanie do tła*/
+    transition-property: background;
+    outline:none;
+    
+}
+
+.premiere_section__form__button:hover {
+    background-color: #424265;
+    background: #7979b7;
+    background-image: -webkit-linear-gradient(top, #7979b7, #53537a); /* button gradient*/
+    background-image: -moz-linear-gradient(top, #7979b7, #53537a);
+    background-image: -ms-linear-gradient(top, #7979b7, #53537a);
+    background-image: -o-linear-gradient(top, #7979b7, #53537a);
+    background-image: linear-gradient(to bottom, #7979b7, #53537a);
+    }
+
+.premiere__section__form__button:focus {
+    background-color: #424265;
+    background: #7979b7;
+    background-image: -webkit-linear-gradient(top, #7979b7, #53537a); /* button gradient*/
+    background-image: -moz-linear-gradient(top, #7979b7, #53537a);
+    background-image: -ms-linear-gradient(top, #7979b7, #53537a);
+    background-image: -o-linear-gradient(top, #7979b7, #53537a);
+    background-image: linear-gradient(to bottom, #7979b7, #53537a);
+    }
+
+
+
+@media screen and (max-width:620px) {
+    .premiere_section__form_container {
+        margin: 1em;
+        padding: 1em;
+        max-width: 85vw;
+    }
+}
+
+@media screen and (max-width:320px) {
+    .premiere_section__form_container {
+      
+        padding: 1em;
+        max-width: 80vw;
+    }
+
+    .premiere_section__form_container h3 {
+        font-size: 1.5em;
+    }
+    .premiere_section__form__checkbox {
+        padding:0;
+        font-size: 0.5em;
+    }
+}

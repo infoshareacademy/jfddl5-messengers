@@ -1,0 +1,58 @@
+/* .description_item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: #7979b7;
+  } */
+  .descriptions{
+      background-color: #ecebeb;
+  }
+  
+  .description {
+    display: grid;
+    grid-auto-rows: 50vh;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "item-photo item-content";
+
+  }
+  
+  .description--reversed {
+    grid-template-areas: "item-content item-photo ";
+  }
+  
+  .description_item-photo-1 {
+    grid-area: item-photo;
+    background-image: url("zdj_feature1.jpeg");
+    background-size: cover;
+    padding:100px;
+  }
+  
+  .description_item-photo-2 {
+    grid-area: item-photo;
+    background-image: url("zdj_feature2.jpeg");
+    background-size: cover;
+    padding:100px;
+  }
+
+  .description_item-content {
+    margin: 10vw;
+    text-align: justify;
+  }
+  
+  @media (max-width: 798px) {
+    .description {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "item-photo"
+        "item-content";
+    }
+  
+    .description--reversed {
+      grid-template-areas:
+        "item-photo"
+        "item-content";
+    }
+  }
+  
