@@ -103,7 +103,7 @@
         if (countOfVisibleCard > 1)
           if (this.checkIfVisibleCardIsAMatch()) this.completeVisibleCard()
         this.showAllCards
-        this.deckOfCards[index] = Object.assign({}, this.deckOfCards[index], {
+        this.deckOfCards[index] = Object.assign(this.deckOfCards[index], {
           visible: true
         });
 
