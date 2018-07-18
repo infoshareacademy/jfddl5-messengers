@@ -8,6 +8,10 @@
     color:black;
     
   }
+
+#tickmarks {
+  display:none
+}
 .fieldset {
     height:60vh;
     margin:3em;

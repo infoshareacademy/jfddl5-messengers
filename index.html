@@ -272,7 +272,7 @@
                 <div>
                     <label for="type-of-user">Wybierz rodzaj użytkownika: </label>
                     <div class="calculator__button_individual">
-                        <input type="radio" name="user-type" value="indywidualny" id="individual" class="individual">
+                        <input checked type="radio" name="user-type" value="indywidualny" id="individual" class="individual">
                         <label for="individual">Indywidualny</label>
                     </div>
                     <div class="calculator__button_company">
@@ -281,13 +281,13 @@
                     </div>
                 </div>
                 <div>
-                    <label for="range-element">Ilość użytkowników:</label>
+                    <label for="range-element" id= "number-of-users">Ilość użytkowników:</label>
                     <div class="tickmarks">
-                        <input type="range" id="rangeinput" list="tickmarks" name="volume" min="1" max="10" step="1" value="1" />
+                        1<input type="range" id="rangeinput" min="1" max="10"   value="1" />10
 
                         <datalist id="tickmarks">
-                            <option class="tickmarks-1" value="1" label="1">
-                            <option class="tickmarks" value="2" label="2">
+                            <option value="1" label="1">
+                            <option value="2" label="2">
                             <option value="3" label="3">
                             <option value="4" label="4">
                             <option value="5" label="5">
