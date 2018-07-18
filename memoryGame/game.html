@@ -17,6 +17,7 @@
         this.complete = false
 
 
+
       }
 
       const newCardArray = function (newArrayLength) {
@@ -71,6 +72,7 @@
         })
       }
 
+
       Game.prototype.renderSingleCard = function (card, index) {
         const cardElement = document.createElement('div')
         cardElement.style.width = this.cardDimension
@@ -79,6 +81,7 @@
 
         if (card.visible) {
           cardElement.innerText = card.front
+
         }
 
         if (card.complete) {
