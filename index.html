@@ -2,7 +2,7 @@
 <html lang="pl">
 
 <head>
-    <link rel="shortcut icon" type="image/png" href="chat.png"/>
+    <link rel="shortcut icon" type="image/png" href="chat.png" />
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css"
     />
     <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
@@ -27,6 +27,8 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500&amp;subset=latin-ext" rel="stylesheet">
     <link rel="stylesheet" href="animate.css">
     <link href="footer.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="calculator.css">
+
 </head>
 
 <body>
@@ -257,17 +259,73 @@
             <p>Twoje dane będą przechowywane jedynie w celu przekazania informacji o premierze naszej aplikacji</p>
         </section>
     </section>
+
+
+
+    <!-- CALCULATOR OF PRICES -->
+
+    <section id="calculator_section">
+        <section class="calculator_container">
+
+            <fieldset class="fieldset">
+                <legend>Oblicz cenę aplikacji</legend>
+                <div>
+                    <label for="type-of-user">Wybierz rodzaj użytkownika: </label>
+                    <div class="calculator__button_individual">
+                        <input type="radio" name="user-type" value="indywidualny" id="individual" class="individual">
+                        <label for="individual">Indywidualny</label>
+                    </div>
+                    <div class="calculator__button_company">
+                        <input type="radio" name="user-type" value="firma" id="company">
+                        <label for="company">Firma</label>
+                    </div>
+                </div>
+                <div>
+                    <label for="range-element">Ilość użytkowników:</label>
+                    <div class="tickmarks">
+                        <input type="range" id="rangeinput" list="tickmarks" name="volume" min="1" max="10" step="1" value="1" />
+
+                        <datalist id="tickmarks">
+                            <option class="tickmarks-1" value="1" label="1">
+                            <option class="tickmarks" value="2" label="2">
+                            <option value="3" label="3">
+                            <option value="4" label="4">
+                            <option value="5" label="5">
+                            <option value="6" label="6">
+                            <option value="7" label="7">
+                            <option value="8" label="8">
+                            <option value="9" label="9">
+                            <option value="10" label="10">
+                        </datalist>
+                    </div>
+
+                </div>
+                <div class="total_price_label">
+                    cena aplikacji:
+                </div>
+                <div class="total_price">
+
+                </div>
+
+            </fieldset>
+        </section>
+    </section>
+
     <!-- FOOTER -->
-    <footer class = 'footer'>
+    <footer class='footer'>
 
         <img src=./chat.png alt='logo' class='footer__logo--chat'>
-        <p>Znajdź nas w <strong><span class='footer__social-media'>social media</span></strong></p>
+        <p>Znajdź nas w
+            <strong>
+                <span class='footer__social-media'>social media</span>
+            </strong>
+        </p>
         <p>Copyright © 2018 - Messengers</p>
     </footer>
 
     <script src="slider.js"></script>
     <script src="in-view.js"></script>
-
+    <script src="calculator.js"></script>
     <script>
         inView('#team')
             .on('enter', () => {
@@ -279,7 +337,7 @@
                 }
             })
 
-    
+
     </script>
 </body>
 
