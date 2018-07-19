@@ -15,6 +15,7 @@
         this.front = front
         this.visible = false
         this.complete = false
+
       }
 
       const newCardArray = function (newArrayLength) {
@@ -89,20 +90,41 @@
         this.gameBoard.appendChild(cardElement)
       }
 
-      Game.prototype.toggleCard = function (index) {
+
+
+      Game.prototype.getCountOfVisibleCard = function () {
         let countOfVisibleCard = this.deckOfCards.filter(function (card) {
           return card.complete === false && card.visible === true
         }).length
-        if (countOfVisibleCard > 1)
-          if (this.checkIfVisibleCardIsAMatch()) this.completeVisibleCard()
-        this.showAllCards
-        this.deckOfCards[index] = Object.assign(this.deckOfCards[index], {
-          visible: true
-        });
+      }
 
+      Game.prototype.toggleCard = function (index) {
+        this.makeVisibleCard(index)
+        if (this.getCountOfVisibleCard() > 1) {
+          if (this.checkIfVisibleCardIsAMatch()) {
+            this.completeVisibleCard()
+          }
+        }
 
         this.render()
       }
+
+      Game.prototype.makeVisibleCard = function (index) {
+        this.deckOfCards[index] = Object.assign(this.deckOfCards[index], {
+          visible: true
+        });
+      }
+
+
+      // Game.prototype.checkIfVisibleCardIsAMatch = function() {
+      //   return true
+      // }
+
+      // Game.prototype.completeVisibleCard = function () {
+      //   return true
+      // }
+
+
 
       Game.prototype.shuffle = function (array) {
         for (let i = array.length - 1; i > 0; i--) {
