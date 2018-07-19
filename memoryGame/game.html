@@ -116,13 +116,23 @@
       }
 
 
-      // Game.prototype.checkIfVisibleCardIsAMatch = function() {
-      //   return true
-      // }
+      Game.prototype.checkIfVisibleCardIsAMatch = function (front) {
+        if (this.deckOfCards(front) === this.deckOfCards(front)) {
+          console.log('')
+          return true
+        }
+      }
 
-      // Game.prototype.completeVisibleCard = function () {
-      //   return true
-      // }
+      Game.prototype.completeVisibleCard = function () {
+       return this.deckOfCards.complete = true
+      }
+
+       Game.prototype.compareVisibleCards = function () {
+        let compareVisibleCards = this.deckOfCards.filter(function (card) {
+          return card.complete === true && card.visible === true
+        }).length
+      }
+
 
 
 
