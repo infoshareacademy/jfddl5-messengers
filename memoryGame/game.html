@@ -92,11 +92,16 @@
 
 
 
-      Game.prototype.getVisibleCards = function () {
-        let visibleCards = this.deckOfCards.filter(function (card, index) {
-          return card.complete === false && card.visible === true
-        })
-        return visibleCards
+      Game.prototype.getVisibleCardsIndexes = function () {
+        let cardsArray = []
+        let visibleCardsIndexes = this.deckOfCards.reduce(function (reduced, card, index) {
+
+          if (card.complete === false && card.visible === true) {
+            reduced.push(index)
+          }
+          return reduced
+        }, cardsArray)
+        return visibleCardsIndexes
       }
 
       Game.prototype.toggleCard = function (index) {
@@ -104,15 +109,15 @@
         this.render()
 
         setTimeout(() => {
-          if (this.getVisibleCards().length > 1) {
-          if (this.checkIfVisibleCardIsAMatch()) {
-            this.completeVisibleCard()
+          if (this.getVisibleCardsIndexes().length > 1) {
+            if (this.checkIfVisibleCardIsAMatch()) {
+              this.completeVisibleCard()
+            }
           }
-        }
-        this.render()
-        },2000)
+          this.render()
+        }, 2000)
 
-        
+
       }
 
       Game.prototype.makeVisibleCard = function (index) {
@@ -121,23 +126,18 @@
         });
       }
 
-      
+
       Game.prototype.checkIfVisibleCardIsAMatch = function () {
-        const visibleCards = this.getVisibleCards()
-        if (visibleCards[0].front === visibleCards[1].front) { //To do use this.decOfCards instead of cisibleCards
-          visibleCards[0].complete = true 
-          visibleCards[1].complete = true
-          console.log('rowne')
+        const visibleCardsIndexes = this.getVisibleCardsIndexes()
+        const firstCardIndex = visibleCardsIndexes[0]
+        const secondCardIndex = visibleCardsIndexes[1]
+        if (this.deckOfCards[firstCardIndex].front === this.deckOfCards[secondCardIndex].front) {
+          this.deckOfCards[firstCardIndex].complete = true
+          this.deckOfCards[secondCardIndex].complete = true
         } else {
-          visibleCards[0].visible = false
-          visibleCards[1].visible = false
-          console.log('różne')
+          this.deckOfCards[firstCardIndex].visible = false
+          this.deckOfCards[secondCardIndex].visible = false
         }
-        console.log(this.getVisibleCards())
-        // if (this.deckOfCards(front) === this.deckOfCards(front)) { 
-        //   console.log('')
-        //   return true
-        // }
       }
 
       Game.prototype.completeVisibleCard = function () {
