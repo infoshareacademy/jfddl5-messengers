@@ -48,6 +48,8 @@
         this.render()
         this.shuffle(this.deckOfCards)
         this.startCountingTime()
+        this.makeTimeDiv()
+
       }
 
       Game.prototype.makeGameBoard = function () {
@@ -63,6 +65,21 @@
         this.container.appendChild(board)
         this.gameBoard = board
       }
+
+
+      Game.prototype.makeTimeDiv = function () {
+        const divTimer = document.createElement('div')
+        divTimer.style.height='100px'
+        divTimer.innerHTML='<p>0 sekund</p>'
+        this.container.appendChild(divTimer)
+      }
+
+
+      Game.prototype.recentTime = function(){
+        let time = newGame.time
+        this.container.querySelector('p').innerHTML = time + ' sekund'
+      }
+
 
       Game.prototype.render = function () {
         this.gameBoard.innerHTML = ''
@@ -100,6 +117,7 @@
         this.deckOfCards[index].visible = true
 
         this.render()
+        this.recentTime()
       }
 
       Game.prototype.shuffle = function (array) {
@@ -109,12 +127,13 @@
         }
       }
 
-       Game.prototype.startCountingTime = function () {
+      Game.prototype.startCountingTime = function () {
         this.timeIntervalId = setInterval(() => {
           this.time = this.time + 1
         }, 1000)
-
       }
+
+
 
       const newGame = new Game('body')
     </script>
