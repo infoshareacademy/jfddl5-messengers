@@ -38,18 +38,14 @@
         this.time = 0
 
         this.init()
-
       }
-
-
 
       Game.prototype.init = function () {
         this.makeGameBoard()
         this.render()
         this.shuffle(this.deckOfCards)
-        this.startCountingTime()
-        this.makeTimeDiv()
 
+        this.makeTimeDiv()
       }
 
       Game.prototype.makeGameBoard = function () {
@@ -66,20 +62,16 @@
         this.gameBoard = board
       }
 
-
       Game.prototype.makeTimeDiv = function () {
         const divTimer = document.createElement('div')
-        divTimer.style.height='100px'
-        divTimer.innerHTML='<p>0 sekund</p>'
+        divTimer.style.height = '100px'
+        divTimer.innerHTML = '<p>0 sekund</p>'
         this.container.appendChild(divTimer)
       }
 
-
-      Game.prototype.recentTime = function(){
-        let time = newGame.time
-        this.container.querySelector('p').innerHTML = time + ' sekund'
+      Game.prototype.renderTime = function () {
+        this.container.querySelector('p').innerHTML = this.time + ' sekund'
       }
-
 
       Game.prototype.render = function () {
         this.gameBoard.innerHTML = ''
@@ -88,7 +80,6 @@
           this.renderSingleCard(card, index)
         })
       }
-
 
       Game.prototype.renderSingleCard = function (card, index) {
         const cardElement = document.createElement('div')
@@ -117,7 +108,7 @@
         this.deckOfCards[index].visible = true
 
         this.render()
-        this.recentTime()
+        this.startCountingTime()
       }
 
       Game.prototype.shuffle = function (array) {
@@ -128,12 +119,18 @@
       }
 
       Game.prototype.startCountingTime = function () {
-        this.timeIntervalId = setInterval(() => {
-          this.time = this.time + 1
-        }, 1000)
+        if(this.timeIntervalId !== null){
+          return
+        }
+
+        this.timeIntervalId = setInterval(
+          () => {
+            this.time = this.time + 1
+            this.renderTime()
+          },
+          1000
+        )
       }
-
-
 
       const newGame = new Game('body')
     </script>
