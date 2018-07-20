@@ -92,21 +92,27 @@
 
 
 
-      Game.prototype.getCountOfVisibleCard = function () {
-        let countOfVisibleCard = this.deckOfCards.filter(function (card) {
+      Game.prototype.getVisibleCards = function () {
+        let visibleCards = this.deckOfCards.filter(function (card, index) {
           return card.complete === false && card.visible === true
-        }).length
+        })
+        return visibleCards
       }
 
       Game.prototype.toggleCard = function (index) {
         this.makeVisibleCard(index)
-        if (this.getCountOfVisibleCard() > 1) {
+        this.render()
+
+        setTimeout(() => {
+          if (this.getVisibleCards().length > 1) {
           if (this.checkIfVisibleCardIsAMatch()) {
             this.completeVisibleCard()
           }
         }
-
         this.render()
+        },2000)
+
+        
       }
 
       Game.prototype.makeVisibleCard = function (index) {
@@ -115,19 +121,30 @@
         });
       }
 
-
-      Game.prototype.checkIfVisibleCardIsAMatch = function (front) {
-        if (this.deckOfCards(front) === this.deckOfCards(front)) {
-          console.log('')
-          return true
+      
+      Game.prototype.checkIfVisibleCardIsAMatch = function () {
+        const visibleCards = this.getVisibleCards()
+        if (visibleCards[0].front === visibleCards[1].front) { //To do use this.decOfCards instead of cisibleCards
+          visibleCards[0].complete = true 
+          visibleCards[1].complete = true
+          console.log('rowne')
+        } else {
+          visibleCards[0].visible = false
+          visibleCards[1].visible = false
+          console.log('różne')
         }
+        console.log(this.getVisibleCards())
+        // if (this.deckOfCards(front) === this.deckOfCards(front)) { 
+        //   console.log('')
+        //   return true
+        // }
       }
 
       Game.prototype.completeVisibleCard = function () {
-       return this.deckOfCards.complete = true
+        return this.deckOfCards.complete = true
       }
 
-       Game.prototype.compareVisibleCards = function () {
+      Game.prototype.compareVisibleCards = function () {
         let compareVisibleCards = this.deckOfCards.filter(function (card) {
           return card.complete === true && card.visible === true
         }).length
