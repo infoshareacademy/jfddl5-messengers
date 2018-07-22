@@ -15,13 +15,24 @@ function Game(selector, numberOfCards) {
     this.gameBoard = null
     this.scoreContainer = null
     this.timeIntervalId = null
+    this.gameContainer = null
     this.deckOfCards = newCardArray(numberOfCards).concat(newCardArray(numberOfCards))
+    this.makeGameContainer()
     this.makeButtons()
-    this.time = 0
 
+    this.time = 0
+    this.numberOfCardsOnBoardSide = Math.sqrt(this.deckOfCards.length)
+    this.cardDimension = (100 / this.numberOfCardsOnBoardSide) + '%'
     this.init()
 }
 
+Game.prototype.makeGameContainer = function () {
+    const gameContainer = document.createElement('div')
+    this.container.appendChild(gameContainer)
+    gameContainer.className = 'gameContainer'
+    this.gameContainer = gameContainer
+
+}
 Game.prototype.makeButtons = function () {
     const levelsContainer = document.createElement('div')
 
@@ -32,55 +43,48 @@ Game.prototype.makeButtons = function () {
     button1.style.height = '30px'
     button1.innerText = '4 karty'
 
-    button1.addEventListener('click', () => {
-        game1.deckOfCards = newCardArray(2).concat(newCardArray(2))
-        this.numberOfCardsOnBoardSide = Math.sqrt(this.deckOfCards.length)
-        this.cardDimension = (100 / this.numberOfCardsOnBoardSide) + '%'
-        this.render()
+    button1.addEventListener('click', function () {
+        //    container.parentNode.removeChild(gameBoard)
+        let board = document.querySelector('.gameContainer')
+        board.remove()
+        game1 = new Game('body', 2)
+
 
     })
-
     button2.style.width = '100px'
     button2.style.height = '30px'
-    button2.innerText = '16 karty'
+    button2.innerText = '16 kart'
+    button2.addEventListener('click', function () {
+        let board = document.querySelector('.gameContainer')
+        board.remove()
+        game1 = new Game('body', 8)
 
-    button2.addEventListener('click', () => {
-        game1.deckOfCards = newCardArray(8).concat(newCardArray(8))
-        this.numberOfCardsOnBoardSide = Math.sqrt(this.deckOfCards.length)
-        this.cardDimension = (100 / this.numberOfCardsOnBoardSide) + '%'
-        this.render()
     })
-
     button3.style.width = '100px'
     button3.style.height = '30px'
     button3.innerText = '36 kart'
-    button3.addEventListener('click', () => {
-        game1.deckOfCards = newCardArray(18).concat(newCardArray(18))
-        this.numberOfCardsOnBoardSide = Math.sqrt(this.deckOfCards.length)
-        this.cardDimension = (100 / this.numberOfCardsOnBoardSide) + '%'
-        this.render()
-
+    button3.addEventListener('click', function () {
+        let board = document.querySelector('.gameContainer')
+        board.remove()
+        game1 = new Game('body', 18)
     })
+
     levelsContainer.appendChild(button1)
     levelsContainer.appendChild(button2)
     levelsContainer.appendChild(button3)
-    this.container.appendChild(levelsContainer)
+    this.gameContainer.appendChild(levelsContainer)
 
 }
 
 Game.prototype.init = function () {
     this.makeGameBoard()
-    this.render(2)
+    this.render()
     this.shuffle(this.deckOfCards)
     this.makeTimeDiv()
 }
 
 Game.prototype.makeGameBoard = function () {
-    if (typeof board === 'undefined' || board === null) {
-        // variable is undefined or null
-        board = document.createElement('div')
-    }
-
+    const board = document.createElement('div')
     board.style.width = '70vh'
     board.style.height = '70vh'
     board.style.backgroundColor = 'yellow'
@@ -90,28 +94,22 @@ Game.prototype.makeGameBoard = function () {
 
     board.className = 'game-board'
 
-    this.container.appendChild(board)
+    this.gameContainer.appendChild(board)
     this.gameBoard = board
-
-    this.numberOfCardsOnBoardSide = Math.sqrt(this.deckOfCards.length)
-    this.cardDimension = (100 / this.numberOfCardsOnBoardSide) + '%'
 }
 
 Game.prototype.makeTimeDiv = function () {
     const divTimer = document.createElement('div')
     divTimer.style.height = '100px'
     divTimer.innerHTML = '<p>0 sekund</p>'
-    this.container.appendChild(divTimer)
+    this.gameContainer.appendChild(divTimer)
 }
 
 Game.prototype.renderTime = function () {
-    this.container.querySelector('p').innerHTML = this.time + ' sekund'
+    this.gameContainer.querySelector('p').innerHTML = this.time + ' sekund'
 }
 
-Game.prototype.render = function (numberOfCards) {
-
-    this.numberOfCardsOnBoardSide = Math.sqrt(this.deckOfCards.length)
-    this.cardDimension = (100 / this.numberOfCardsOnBoardSide) + '%'
+Game.prototype.render = function () {
     this.gameBoard.innerHTML = ''
 
     this.deckOfCards.forEach((card, index) => {
@@ -136,7 +134,8 @@ Game.prototype.renderSingleCard = function (card, index) {
     }
 
     if (card.complete) {
-        cardElement.innerText = card.front + 'competed'
+        cardElement.innerText = card.front
+        cardElement.style.backgroundColor = 'green'
     }
 
     cardElement.addEventListener(
