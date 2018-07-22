@@ -263,12 +263,14 @@ Game.prototype.renderRankingList=function(){
         return a[1] - b[1]
     })
     console.log(sortable)
-    // for (i=0; i<sortable.length; i++){
-    //     if (typeof(sortable[i][1])!=='string'){
-            
-    //         console.log(sortable)
-    //     }
-    // }
+    let onlyStrings = []
+    let temp= []
+    for (i=0; i<sortable.length; i++){
+        if (typeof(sortable[i][1])==='string'){
+            temp = sortable[i]
+            console.log(temp)
+        }
+    }
 
 
     // const filterStrings = array => {
