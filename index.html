@@ -58,6 +58,9 @@
             <li class="navbar__container__items__links">
                 <a href="#premiere_section">Zapisy na premierę</a>
             </li>
+            <li class="navbar__container__items__links">
+                <a href="#calculator_section">Cena aplikacji</a>
+            </li>
 
         </ul>
     </nav>
@@ -268,22 +271,22 @@
         <section class="calculator_container">
 
             <fieldset class="fieldset">
-                <legend>Oblicz cenę aplikacji</legend>
+                <h3 class = "calculator_legend">Oblicz cenę aplikacji</h3>
                 <div>
-                    <label for="type-of-user">Wybierz rodzaj użytkownika: </label>
+                    <label class = "calculator_text_user" for="type-of-user">Wybierz rodzaj użytkownika: </label>
                     <div class="calculator__button_individual">
                         <input checked type="radio" name="user-type" value="indywidualny" id="individual" class="individual">
-                        <label for="individual">Indywidualny</label>
+                        <label class = "calculator_text" for="individual">Indywidualny/niekomercyjny</label>
                     </div>
                     <div class="calculator__button_company">
                         <input type="radio" name="user-type" value="firma" id="company">
-                        <label for="company">Firma</label>
+                        <label class = "calculator_text" for="company">Firma/komercyjny</label>
                     </div>
                 </div>
-                <div>
-                    <label for="range-element" id= "number-of-users">Ilość użytkowników:</label>
+                <div class = "calculator__range_element">
+                    <label for="range-element" id = "number-of-users" class = "calculator_text">Ilość użytkowników:</label>
                     <div class="tickmarks">
-                        1<input type="range" id="rangeinput" min="1" max="10"   value="1" />10
+                        1<input class = "calculator_text" type="range" id="rangeinput" min="1" max="10"   value="1" />10
 
                         <datalist id="tickmarks">
                             <option value="1" label="1">
@@ -300,7 +303,7 @@
                     </div>
 
                 </div>
-                <div class="total_price_label">
+                <div class="total_price_label calculator_text">
                     cena aplikacji:
                 </div>
                 <div class="total_price">
