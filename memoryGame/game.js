@@ -5,10 +5,10 @@ function Card(front) {
 }
 
 const newCardArray = function (newArrayLength) {
-    return Array(newArrayLength).fill({}).map(function (item, index) {
+        return Array(newArrayLength).fill({}).map(function (item, index) {
         return new Card(index + 1)
-    })
-}
+        })
+    }
 
 function Game(selector, numberOfCards) {
     this.container = document.querySelector(selector)
@@ -17,12 +17,11 @@ function Game(selector, numberOfCards) {
     this.timeIntervalId = null
     this.gameContainer = null
     this.deckOfCards = newCardArray(numberOfCards).concat(newCardArray(numberOfCards))
-    this.makeGameContainer()
-    this.makeButtons()
-
+    
     this.time = 0
     this.numberOfCardsOnBoardSide = Math.sqrt(this.deckOfCards.length)
     this.cardDimension = (100 / this.numberOfCardsOnBoardSide) + '%'
+    
     this.init()
 }
 
@@ -31,56 +30,49 @@ Game.prototype.makeGameContainer = function () {
     this.container.appendChild(gameContainer)
     gameContainer.className = 'gameContainer'
     this.gameContainer = gameContainer
-
 }
+
+Game.prototype.makeSingleButton = function(numberOfCards){
+    const button = document.createElement('button')
+    button.style.width = '100px'
+    button.style.height = '30px'
+    button.innerText = numberOfCards +' kart'
+    button.addEventListener('click', () => {
+    this.reinit(numberOfCards)
+    })
+    return button
+}
+
 Game.prototype.makeButtons = function () {
     const levelsContainer = document.createElement('div')
 
-    const button1 = document.createElement('button')
-    const button2 = document.createElement('button')
-    const button3 = document.createElement('button')
-    button1.style.width = '100px'
-    button1.style.height = '30px'
-    button1.innerText = '4 karty'
-
-    button1.addEventListener('click', function () {
-        //    container.parentNode.removeChild(gameBoard)
-        let board = document.querySelector('.gameContainer')
-        board.remove()
-        game1 = new Game('body', 2)
-
-
-    })
-    button2.style.width = '100px'
-    button2.style.height = '30px'
-    button2.innerText = '16 kart'
-    button2.addEventListener('click', function () {
-        let board = document.querySelector('.gameContainer')
-        board.remove()
-        game1 = new Game('body', 8)
-
-    })
-    button3.style.width = '100px'
-    button3.style.height = '30px'
-    button3.innerText = '36 kart'
-    button3.addEventListener('click', function () {
-        let board = document.querySelector('.gameContainer')
-        board.remove()
-        game1 = new Game('body', 18)
-    })
+    const button1 = this.makeSingleButton(4)
+    const button2 = this.makeSingleButton(16)
+    const button3 = this.makeSingleButton(36)
 
     levelsContainer.appendChild(button1)
     levelsContainer.appendChild(button2)
     levelsContainer.appendChild(button3)
+    
     this.gameContainer.appendChild(levelsContainer)
-
 }
 
 Game.prototype.init = function () {
+    this.makeGameContainer()
+    this.makeButtons()
     this.makeGameBoard()
+    
     this.render()
     this.shuffle(this.deckOfCards)
     this.makeTimeDiv()
+}
+
+Game.prototype.reinit = function(numberOfCards){
+    this.deckOfCards = newCardArray(numberOfCards/2).concat(newCardArray(numberOfCards/2))
+    this.shuffle(this.deckOfCards)
+    this.numberOfCardsOnBoardSide = Math.sqrt(this.deckOfCards.length)
+    this.cardDimension = (100 / this.numberOfCardsOnBoardSide) + '%'
+    this.render()
 }
 
 Game.prototype.makeGameBoard = function () {
@@ -91,7 +83,6 @@ Game.prototype.makeGameBoard = function () {
     board.style.display = 'flex'
     board.style.flexWrap = 'wrap'
     board.style.justifyContent = 'center'
-
     board.className = 'game-board'
 
     this.gameContainer.appendChild(board)
@@ -127,7 +118,6 @@ Game.prototype.renderSingleCard = function (card, index) {
     cardElement.style.color = 'white'
     cardElement.style.fontSize = '5em'
     cardElement.style.textAlign = 'center'
-
 
     if (card.visible) {
         cardElement.innerText = card.front
@@ -202,8 +192,8 @@ Game.prototype.hideVisibleCards = function () {
 }
 
 Game.prototype.compareVisibleCards = function () {
-    let compareVisibleCards = this.deckOfCards.filter(function (card) {
-        return card.complete === true && card.visible === true
+    this.deckOfCards.filter(function (card) {
+    return card.complete === true && card.visible === true
     }).length
 }
 
