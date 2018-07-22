@@ -227,6 +227,15 @@ Game.prototype.startCountingTime = function () {
 }
 
 Game.prototype.displayScore = function(){
-    console.log('Gratulacje! Twoj wynik to ' + this.yourScore + ' sekund.')
-    
+    let scoreMessage = ''
+    const lastDigitOfNumber = this.yourScore.toString().split('').pop()
+    if (this.yourScore === 1){
+        scoreMessage = 'Gratulacje! Twoj wynik to ' + this.yourScore + ' sekunda.'
+    } else if(this.yourScore === 0 || (this.yourScore>4 && this.yourScore<22) || lastDigitOfNumber>4){
+        scoreMessage = 'Gratulacje! Twoj wynik to ' + this.yourScore + ' sekund.'
+    } else if (lastDigitOfNumber>1 || lastDigitOfNumber<5){
+        scoreMessage = 'Gratulacje! Twoj wynik to ' + this.yourScore + ' sekundy.'
+    }
+    console.log(lastDigitOfNumber)
+    this.gameContainer.querySelector('p').innerHTML = scoreMessage
 }
