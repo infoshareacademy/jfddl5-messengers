@@ -39,6 +39,8 @@ Game.prototype.makeSingleButton = function(numberOfCards){
     button.innerText = numberOfCards +' kart'
     button.addEventListener('click', () => {
     this.reinit(numberOfCards)
+    this.gameContainer.querySelector('p').innerHTML = '0 sekund'
+    clearInterval(this.timeIntervalId)
     })
     return button
 }
@@ -65,6 +67,7 @@ Game.prototype.init = function () {
     this.render()
     this.shuffle(this.deckOfCards)
     this.makeTimeDiv()
+    this.renderRankingList()
 }
 
 Game.prototype.reinit = function(numberOfCards){
@@ -131,6 +134,7 @@ Game.prototype.renderSingleCard = function (card, index) {
     cardElement.addEventListener(
         'click',
         () => this.toggleCard(index)
+        
     )
 
     this.gameBoard.appendChild(cardElement)
@@ -144,6 +148,8 @@ Game.prototype.getVisibleCards = function () {
 
 Game.prototype.toggleCard = function (index) {
     this.startCountingTime()
+
+    
 
     if (this.getVisibleCards().length > 1) {
         this.hideVisibleCards()
@@ -169,7 +175,9 @@ Game.prototype.checkWin = function () {
         console.log(this.yourScore)
         clearInterval(this.timeIntervalId)
         this.displayScore()
+        
     }
+    
 }
 
 Game.prototype.makeVisibleCard = function (index) {
@@ -216,6 +224,7 @@ Game.prototype.startCountingTime = function () {
 
     this.timeIntervalId = setInterval(
         () => {
+            
             this.time = this.time + 1
             this.renderTime()
                     if (this.time > this.yourScore){
@@ -238,4 +247,34 @@ Game.prototype.displayScore = function(){
     }
     console.log(lastDigitOfNumber)
     this.gameContainer.querySelector('p').innerHTML = scoreMessage
+    const currentTime = new Date()
+    const id = currentTime.getHours()+':'+currentTime.getMinutes()+':'+currentTime.getSeconds()
+    localStorage.setItem(id, this.yourScore)
+}
+
+Game.prototype.renderRankingList=function(){
+    const ranking = localStorage 
+    const rankingContainer = document.createElement('div')
+    let sortable = []
+    for (let date in ranking){
+        sortable.push([date, ranking[date]])
+    }
+    sortable.sort(function(a,b){
+        return a[1] - b[1]
+    })
+    console.log(sortable)
+    // for (i=0; i<sortable.length; i++){
+    //     if (typeof(sortable[i][1])!=='string'){
+            
+    //         console.log(sortable)
+    //     }
+    // }
+
+
+    // const filterStrings = array => {
+    //     typeof(array) === 'string'
+    // }
+
+    // const onlyScores = sortable.filter(filterStrings)
+    // console.log(onlyScores)
 }
