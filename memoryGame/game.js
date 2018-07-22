@@ -5,10 +5,10 @@ function Card(front) {
 }
 
 const newCardArray = function (newArrayLength) {
-        return Array(newArrayLength).fill({}).map(function (item, index) {
+    return Array(newArrayLength).fill({}).map(function (item, index) {
         return new Card(index + 1)
-        })
-    }
+    })
+}
 
 function Game(selector, numberOfCards) {
     this.container = document.querySelector(selector)
@@ -16,12 +16,11 @@ function Game(selector, numberOfCards) {
     this.scoreContainer = null
     this.timeIntervalId = null
     this.gameContainer = null
-    this.deckOfCards = newCardArray(numberOfCards).concat(newCardArray(numberOfCards))
-    
+    this.deckOfCards = newCardArray(numberOfCards / 2).concat(newCardArray(numberOfCards / 2))
+    this.currentLevel = 1
     this.time = 0
     this.numberOfCardsOnBoardSide = Math.sqrt(this.deckOfCards.length)
     this.cardDimension = (100 / this.numberOfCardsOnBoardSide) + '%'
-    
     this.init()
 }
 
@@ -32,14 +31,17 @@ Game.prototype.makeGameContainer = function () {
     this.gameContainer = gameContainer
 }
 
-Game.prototype.makeSingleButton = function(numberOfCards){
+Game.prototype.makeSingleButton = function (numberOfCards) {
     const button = document.createElement('button')
     button.style.width = '100px'
     button.style.height = '30px'
-    button.innerText = numberOfCards +' kart'
+    button.innerText = numberOfCards + ' kart'
+    // button.disabled = true
     button.addEventListener('click', () => {
-    this.reinit(numberOfCards)
+        this.reinit(numberOfCards)
     })
+    console.log(numberOfCards)
+
     return button
 }
 
@@ -53,7 +55,7 @@ Game.prototype.makeButtons = function () {
     levelsContainer.appendChild(button1)
     levelsContainer.appendChild(button2)
     levelsContainer.appendChild(button3)
-    
+
     this.gameContainer.appendChild(levelsContainer)
 }
 
@@ -61,14 +63,22 @@ Game.prototype.init = function () {
     this.makeGameContainer()
     this.makeButtons()
     this.makeGameBoard()
-    
     this.render()
     this.shuffle(this.deckOfCards)
     this.makeTimeDiv()
 }
 
-Game.prototype.reinit = function(numberOfCards){
-    this.deckOfCards = newCardArray(numberOfCards/2).concat(newCardArray(numberOfCards/2))
+Game.prototype.reinit = function (numberOfCards) {
+    if (numberOfCards === 4) {
+        this.currentLevel = 1
+    }
+    else if (numberOfCards === 16) {
+        this.currentLevel = 2
+    }
+    else {
+        this.currentLevel = 3
+    }
+    this.deckOfCards = newCardArray(numberOfCards / 2).concat(newCardArray(numberOfCards / 2))
     this.shuffle(this.deckOfCards)
     this.numberOfCardsOnBoardSide = Math.sqrt(this.deckOfCards.length)
     this.cardDimension = (100 / this.numberOfCardsOnBoardSide) + '%'
@@ -118,6 +128,7 @@ Game.prototype.renderSingleCard = function (card, index) {
     cardElement.style.color = 'white'
     cardElement.style.fontSize = '5em'
     cardElement.style.textAlign = 'center'
+    this.gameBoard.appendChild(cardElement)
 
     if (card.visible) {
         cardElement.innerText = card.front
@@ -132,8 +143,6 @@ Game.prototype.renderSingleCard = function (card, index) {
         'click',
         () => this.toggleCard(index)
     )
-
-    this.gameBoard.appendChild(cardElement)
 }
 
 Game.prototype.getVisibleCards = function () {
@@ -156,15 +165,26 @@ Game.prototype.toggleCard = function (index) {
     }
 
     this.render()
-
     this.checkWin()
 }
 
 Game.prototype.checkWin = function () {
     const numberOfUncompletedCards = this.deckOfCards.filter(card => !card.complete).length
 
-    if (numberOfUncompletedCards === 0) {
-        console.log('Win')
+    if (numberOfUncompletedCards === 0 && this.currentLevel === 1) {
+        this.currentLevel++
+        if (confirm('Gratulujemy! Wygrałeś! Czy chcesz zagrać na trudniejszym poziomie?')) {
+            this.reinit(16)
+        } else {
+            this.reinit(4)
+        }
+    }
+    else if (numberOfUncompletedCards === 0 && this.currentLevel === 2) {
+        if (confirm('Gratulujemy! Wygrałeś Czy chcesz zagrać na trudniejszym poziomie?')) {
+            this.reinit(36)
+        } else {
+            this.reinit(16)
+        }
     }
 }
 
@@ -193,7 +213,7 @@ Game.prototype.hideVisibleCards = function () {
 
 Game.prototype.compareVisibleCards = function () {
     this.deckOfCards.filter(function (card) {
-    return card.complete === true && card.visible === true
+        return card.complete === true && card.visible === true
     }).length
 }
 
