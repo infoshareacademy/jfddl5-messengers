@@ -156,8 +156,8 @@ Game.prototype.toggleCard = function (index) {
     }
 
     this.render()
-
     this.checkWin()
+
 }
 
 Game.prototype.checkWin = function () {
@@ -165,6 +165,10 @@ Game.prototype.checkWin = function () {
 
     if (numberOfUncompletedCards === 0) {
         console.log('Win')
+        this.yourScore = this.time 
+        console.log(this.yourScore)
+        clearInterval(this.timeIntervalId)
+        this.displayScore()
     }
 }
 
@@ -208,12 +212,21 @@ Game.prototype.startCountingTime = function () {
     if (this.timeIntervalId !== null) {
         return
     }
+  
 
     this.timeIntervalId = setInterval(
         () => {
             this.time = this.time + 1
             this.renderTime()
+                    if (this.time > this.yourScore){
+                        this.displayScore()
+                    }
         },
         1000
     )
+}
+
+Game.prototype.displayScore = function(){
+    console.log('Gratulacje! Twoj wynik to ' + this.yourScore + ' sekund.')
+    
 }
