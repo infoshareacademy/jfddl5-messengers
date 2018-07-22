@@ -5,30 +5,74 @@ function Card(front) {
 }
 
 const newCardArray = function (newArrayLength) {
-    return Array(newArrayLength).fill({}).map(function (item, index) {
+        return Array(newArrayLength).fill({}).map(function (item, index) {
         return new Card(index + 1)
-    })
-}
+        })
+    }
 
-function Game(selector) {
+function Game(selector, numberOfCards) {
     this.container = document.querySelector(selector)
     this.gameBoard = null
     this.scoreContainer = null
     this.timeIntervalId = null
-    this.deckOfCards = newCardArray(2).concat(newCardArray(2))
+    this.gameContainer = null
+    this.deckOfCards = newCardArray(numberOfCards).concat(newCardArray(numberOfCards))
+    
     this.time = 0
-
     this.numberOfCardsOnBoardSide = Math.sqrt(this.deckOfCards.length)
     this.cardDimension = (100 / this.numberOfCardsOnBoardSide) + '%'
-
+    
     this.init()
 }
 
+Game.prototype.makeGameContainer = function () {
+    const gameContainer = document.createElement('div')
+    this.container.appendChild(gameContainer)
+    gameContainer.className = 'gameContainer'
+    this.gameContainer = gameContainer
+}
+
+Game.prototype.makeSingleButton = function(numberOfCards){
+    const button = document.createElement('button')
+    button.style.width = '100px'
+    button.style.height = '30px'
+    button.innerText = numberOfCards +' kart'
+    button.addEventListener('click', () => {
+    this.reinit(numberOfCards)
+    })
+    return button
+}
+
+Game.prototype.makeButtons = function () {
+    const levelsContainer = document.createElement('div')
+
+    const button1 = this.makeSingleButton(4)
+    const button2 = this.makeSingleButton(16)
+    const button3 = this.makeSingleButton(36)
+
+    levelsContainer.appendChild(button1)
+    levelsContainer.appendChild(button2)
+    levelsContainer.appendChild(button3)
+    
+    this.gameContainer.appendChild(levelsContainer)
+}
+
 Game.prototype.init = function () {
+    this.makeGameContainer()
+    this.makeButtons()
     this.makeGameBoard()
+    
     this.render()
     this.shuffle(this.deckOfCards)
     this.makeTimeDiv()
+}
+
+Game.prototype.reinit = function(numberOfCards){
+    this.deckOfCards = newCardArray(numberOfCards/2).concat(newCardArray(numberOfCards/2))
+    this.shuffle(this.deckOfCards)
+    this.numberOfCardsOnBoardSide = Math.sqrt(this.deckOfCards.length)
+    this.cardDimension = (100 / this.numberOfCardsOnBoardSide) + '%'
+    this.render()
 }
 
 Game.prototype.makeGameBoard = function () {
@@ -39,10 +83,9 @@ Game.prototype.makeGameBoard = function () {
     board.style.display = 'flex'
     board.style.flexWrap = 'wrap'
     board.style.justifyContent = 'center'
-
     board.className = 'game-board'
 
-    this.container.appendChild(board)
+    this.gameContainer.appendChild(board)
     this.gameBoard = board
 }
 
@@ -50,11 +93,11 @@ Game.prototype.makeTimeDiv = function () {
     const divTimer = document.createElement('div')
     divTimer.style.height = '100px'
     divTimer.innerHTML = '<p>0 sekund</p>'
-    this.container.appendChild(divTimer)
+    this.gameContainer.appendChild(divTimer)
 }
 
 Game.prototype.renderTime = function () {
-    this.container.querySelector('p').innerHTML = this.time + ' sekund'
+    this.gameContainer.querySelector('p').innerHTML = this.time + ' sekund'
 }
 
 Game.prototype.render = function () {
@@ -69,16 +112,20 @@ Game.prototype.renderSingleCard = function (card, index) {
     const cardElement = document.createElement('div')
     cardElement.style.width = this.cardDimension
     cardElement.style.height = this.cardDimension
-    cardElement.style.backgroundColor = 'red'
+    cardElement.style.backgroundColor = '#6b6bca'
     cardElement.style.border = '1px solid black'
     cardElement.style.boxSizing = 'border-box'
+    cardElement.style.color = 'white'
+    cardElement.style.fontSize = '5em'
+    cardElement.style.textAlign = 'center'
 
     if (card.visible) {
         cardElement.innerText = card.front
     }
 
     if (card.complete) {
-        cardElement.innerText = card.front + 'competed'
+        cardElement.innerText = card.front
+        cardElement.style.backgroundColor = 'green'
     }
 
     cardElement.addEventListener(
@@ -145,8 +192,8 @@ Game.prototype.hideVisibleCards = function () {
 }
 
 Game.prototype.compareVisibleCards = function () {
-    let compareVisibleCards = this.deckOfCards.filter(function (card) {
-        return card.complete === true && card.visible === true
+    this.deckOfCards.filter(function (card) {
+    return card.complete === true && card.visible === true
     }).length
 }
 
