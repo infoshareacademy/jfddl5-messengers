@@ -1,4 +1,3 @@
-
 function Card(front) {
     this.front = front
     this.visible = false
@@ -11,70 +10,221 @@ const newCardArray = function (newArrayLength) {
     })
 }
 
-
-function Game(selector) {
+function Game(selector, numberOfCards) {
     this.container = document.querySelector(selector)
     this.gameBoard = null
     this.scoreContainer = null
-    this.deckOfCards = newCardArray(8).concat(newCardArray(8))
+    this.timeIntervalId = null
+    this.deckOfCards = newCardArray(numberOfCards).concat(newCardArray(numberOfCards))
+    this.makeButtons()
+    this.time = 0
+
+    this.init()
 }
 
-// VARS
-// place for "global" variables that you will use in whole game
-// like score, or time
-// they aren't really global - because of self-invoking function
+Game.prototype.makeButtons = function () {
+    const levelsContainer = document.createElement('div')
 
-// FUNCTIONS
-Game.prototype.init = function (container) {
+    const button1 = document.createElement('button')
+    const button2 = document.createElement('button')
+    const button3 = document.createElement('button')
+    button1.style.width = '100px'
+    button1.style.height = '30px'
+    button1.innerText = '4 karty'
 
+    button1.addEventListener('click', () => {
+        game1.deckOfCards = newCardArray(2).concat(newCardArray(2))
+        this.numberOfCardsOnBoardSide = Math.sqrt(this.deckOfCards.length)
+        this.cardDimension = (100 / this.numberOfCardsOnBoardSide) + '%'
+        this.render()
 
-  this.shuffle(this.deckOfCards)
-    // this function should be called when we want to init game
-    // it accepts 1 argument - dom node of the container
-    // where game should be rendered, eg it can be body of document
+    })
 
-    // this function should render first frame of game and set all
-    // of the variables like time to game end that werent predefinied
+    button2.style.width = '100px'
+    button2.style.height = '30px'
+    button2.innerText = '16 karty'
+
+    button2.addEventListener('click', () => {
+        game1.deckOfCards = newCardArray(8).concat(newCardArray(8))
+        this.numberOfCardsOnBoardSide = Math.sqrt(this.deckOfCards.length)
+        this.cardDimension = (100 / this.numberOfCardsOnBoardSide) + '%'
+        this.render()
+    })
+
+    button3.style.width = '100px'
+    button3.style.height = '30px'
+    button3.innerText = '36 kart'
+    button3.addEventListener('click', () => {
+        game1.deckOfCards = newCardArray(18).concat(newCardArray(18))
+        this.numberOfCardsOnBoardSide = Math.sqrt(this.deckOfCards.length)
+        this.cardDimension = (100 / this.numberOfCardsOnBoardSide) + '%'
+        this.render()
+
+    })
+    levelsContainer.appendChild(button1)
+    levelsContainer.appendChild(button2)
+    levelsContainer.appendChild(button3)
+    this.container.appendChild(levelsContainer)
+
 }
 
-Game.prototype.render = function () {
-    // this function will be responsible of rendering new content 
-    // in the container when game ticks or player interacts
+Game.prototype.init = function () {
+    this.makeGameBoard()
+    this.render(2)
+    this.shuffle(this.deckOfCards)
+    this.makeTimeDiv()
 }
 
-// here you can put some functions taht renders only parts of the game 
-// and will be used in render function
+Game.prototype.makeGameBoard = function () {
+    if (typeof board === 'undefined' || board === null) {
+        // variable is undefined or null
+        board = document.createElement('div')
+    }
 
-// here you will attach all events listeners like oncliks or keydowns
-Game.prototype.attachEventListeners = function () { }
+    board.style.width = '70vh'
+    board.style.height = '70vh'
+    board.style.backgroundColor = 'yellow'
+    board.style.display = 'flex'
+    board.style.flexWrap = 'wrap'
+    board.style.justifyContent = 'center'
 
-// move should be another function called eg. when event is fired
-// it is quite obvious that move bakwards is a move fovard with minus sign ;)
-Game.prototype.move = function () { }
+    board.className = 'game-board'
 
-// in this fucntion you can do all stuff that needs to be repeated
-// you can invoke this function in an interval
-// you can set that interval in init function
-Game.prototype.gameTick = function () { }
+    this.container.appendChild(board)
+    this.gameBoard = board
 
-// below functions are self-describing ;)
-Game.prototype.incScore = function () { }
-Game.prototype.displayScore = function () { }
+    this.numberOfCardsOnBoardSide = Math.sqrt(this.deckOfCards.length)
+    this.cardDimension = (100 / this.numberOfCardsOnBoardSide) + '%'
+}
 
-Game.prototype.decTime = function () { }
-Game.prototype.displayTIme = function () { }
+Game.prototype.makeTimeDiv = function () {
+    const divTimer = document.createElement('div')
+    divTimer.style.height = '100px'
+    divTimer.innerHTML = '<p>0 sekund</p>'
+    this.container.appendChild(divTimer)
+}
 
-// invoked when game ends (you can check if time elepsed eg. in gameTick function)
-Game.prototype.endGame = function () { }
+Game.prototype.renderTime = function () {
+    this.container.querySelector('p').innerHTML = this.time + ' sekund'
+}
 
-// HELPERS
+Game.prototype.render = function (numberOfCards) {
 
-// here put some functions that are not directly itto the game
-// but will help to do some general stuff - like make an array of ...
+    this.numberOfCardsOnBoardSide = Math.sqrt(this.deckOfCards.length)
+    this.cardDimension = (100 / this.numberOfCardsOnBoardSide) + '%'
+    this.gameBoard.innerHTML = ''
+
+    this.deckOfCards.forEach((card, index) => {
+        this.renderSingleCard(card, index)
+    })
+}
+
+Game.prototype.renderSingleCard = function (card, index) {
+    const cardElement = document.createElement('div')
+    cardElement.style.width = this.cardDimension
+    cardElement.style.height = this.cardDimension
+    cardElement.style.backgroundColor = '#6b6bca'
+    cardElement.style.border = '1px solid black'
+    cardElement.style.boxSizing = 'border-box'
+    cardElement.style.color = 'white'
+    cardElement.style.fontSize = '5em'
+    cardElement.style.textAlign = 'center'
+
+
+    if (card.visible) {
+        cardElement.innerText = card.front
+    }
+
+    if (card.complete) {
+        cardElement.innerText = card.front + 'competed'
+    }
+
+    cardElement.addEventListener(
+        'click',
+        () => this.toggleCard(index)
+    )
+
+    this.gameBoard.appendChild(cardElement)
+}
+
+Game.prototype.getVisibleCards = function () {
+    return this.deckOfCards.filter(
+        card => card.complete === false && card.visible === true
+    )
+}
+
+Game.prototype.toggleCard = function (index) {
+    this.startCountingTime()
+
+    if (this.getVisibleCards().length > 1) {
+        this.hideVisibleCards()
+    }
+
+    this.makeVisibleCard(index)
+
+    if (this.getVisibleCards().length > 1) {
+        this.checkIfVisibleCardIsAMatch()
+    }
+
+    this.render()
+
+    this.checkWin()
+}
+
+Game.prototype.checkWin = function () {
+    const numberOfUncompletedCards = this.deckOfCards.filter(card => !card.complete).length
+
+    if (numberOfUncompletedCards === 0) {
+        console.log('Win')
+    }
+}
+
+Game.prototype.makeVisibleCard = function (index) {
+    this.deckOfCards[index] = Object.assign(this.deckOfCards[index], {
+        visible: true
+    });
+}
+
+Game.prototype.checkIfVisibleCardIsAMatch = function () {
+    const visibleCards = this.getVisibleCards()
+    const firstCard = visibleCards[0]
+    const secondCard = visibleCards[1]
+    if (firstCard.front === secondCard.front) {
+        this.completeVisibleCards()
+    }
+}
+
+Game.prototype.completeVisibleCards = function () {
+    this.deckOfCards = this.deckOfCards.map(card => card.visible ? Object.assign(card, { complete: true }) : card)
+}
+
+Game.prototype.hideVisibleCards = function () {
+    this.deckOfCards = this.deckOfCards.map(card => card.visible && !card.completed ? Object.assign(card, { visible: false }) : card)
+}
+
+Game.prototype.compareVisibleCards = function () {
+    let compareVisibleCards = this.deckOfCards.filter(function (card) {
+        return card.complete === true && card.visible === true
+    }).length
+}
 
 Game.prototype.shuffle = function (array) {
-  for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-  }
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
+Game.prototype.startCountingTime = function () {
+    if (this.timeIntervalId !== null) {
+        return
+    }
+
+    this.timeIntervalId = setInterval(
+        () => {
+            this.time = this.time + 1
+            this.renderTime()
+        },
+        1000
+    )
 }
