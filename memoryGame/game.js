@@ -10,25 +10,80 @@ const newCardArray = function (newArrayLength) {
     })
 }
 
-function Game(selector) {
+function Game(selector, numberOfCards) {
     this.container = document.querySelector(selector)
     this.gameBoard = null
     this.scoreContainer = null
     this.timeIntervalId = null
-    this.deckOfCards = newCardArray(2).concat(newCardArray(2))
+    this.gameContainer = null
+    this.deckOfCards = newCardArray(numberOfCards / 2).concat(newCardArray(numberOfCards / 2))
+    this.currentLevel = 1
     this.time = 0
-
+    this.yourScore = 0
     this.numberOfCardsOnBoardSide = Math.sqrt(this.deckOfCards.length)
     this.cardDimension = (100 / this.numberOfCardsOnBoardSide) + '%'
-
     this.init()
 }
 
+Game.prototype.makeGameContainer = function () {
+    const gameContainer = document.createElement('div')
+    this.container.appendChild(gameContainer)
+    gameContainer.className = 'gameContainer'
+    this.gameContainer = gameContainer
+}
+
+Game.prototype.makeSingleButton = function (numberOfCards) {
+    const button = document.createElement('button')
+    button.style.width = '100px'
+    button.style.height = '30px'
+    button.innerText = numberOfCards + ' kart'
+    // button.disabled = true
+    button.addEventListener('click', () => {
+        this.reinit(numberOfCards)
+    })
+    console.log(numberOfCards)
+
+    return button
+}
+
+Game.prototype.makeButtons = function () {
+    const levelsContainer = document.createElement('div')
+
+    const button1 = this.makeSingleButton(4)
+    const button2 = this.makeSingleButton(16)
+    const button3 = this.makeSingleButton(36)
+
+    levelsContainer.appendChild(button1)
+    levelsContainer.appendChild(button2)
+    levelsContainer.appendChild(button3)
+
+    this.gameContainer.appendChild(levelsContainer)
+}
+
 Game.prototype.init = function () {
+    this.makeGameContainer()
+    // this.makeButtons()
     this.makeGameBoard()
     this.render()
     this.shuffle(this.deckOfCards)
     this.makeTimeDiv()
+}
+
+Game.prototype.reinit = function (numberOfCards) {
+    if (numberOfCards === 4) {
+        this.currentLevel = 1
+    }
+    else if (numberOfCards === 16) {
+        this.currentLevel = 2
+    }
+    else {
+        this.currentLevel = 3
+    }
+    this.deckOfCards = newCardArray(numberOfCards / 2).concat(newCardArray(numberOfCards / 2))
+    this.shuffle(this.deckOfCards)
+    this.numberOfCardsOnBoardSide = Math.sqrt(this.deckOfCards.length)
+    this.cardDimension = (100 / this.numberOfCardsOnBoardSide) + '%'
+    this.render()
 }
 
 Game.prototype.makeGameBoard = function () {
@@ -39,10 +94,9 @@ Game.prototype.makeGameBoard = function () {
     board.style.display = 'flex'
     board.style.flexWrap = 'wrap'
     board.style.justifyContent = 'center'
-
     board.className = 'game-board'
 
-    this.container.appendChild(board)
+    this.gameContainer.appendChild(board)
     this.gameBoard = board
 }
 
@@ -50,11 +104,11 @@ Game.prototype.makeTimeDiv = function () {
     const divTimer = document.createElement('div')
     divTimer.style.height = '100px'
     divTimer.innerHTML = '<p>0 sekund</p>'
-    this.container.appendChild(divTimer)
+    this.gameContainer.appendChild(divTimer)
 }
 
 Game.prototype.renderTime = function () {
-    this.container.querySelector('p').innerHTML = this.time + ' sekund'
+    this.gameContainer.querySelector('p').innerHTML = this.time + ' sekund'
 }
 
 Game.prototype.render = function () {
@@ -69,24 +123,28 @@ Game.prototype.renderSingleCard = function (card, index) {
     const cardElement = document.createElement('div')
     cardElement.style.width = this.cardDimension
     cardElement.style.height = this.cardDimension
-    cardElement.style.backgroundColor = 'red'
+    cardElement.style.backgroundColor = '#6b6bca'
     cardElement.style.border = '1px solid black'
     cardElement.style.boxSizing = 'border-box'
+    cardElement.style.color = 'white'
+    cardElement.style.fontSize = '5em'
+    cardElement.style.textAlign = 'center'
+    this.gameBoard.appendChild(cardElement)
 
     if (card.visible) {
         cardElement.innerText = card.front
     }
 
     if (card.complete) {
-        cardElement.innerText = card.front + 'competed'
+        cardElement.innerText = card.front
+        cardElement.style.backgroundColor = 'green'
     }
 
     cardElement.addEventListener(
         'click',
         () => this.toggleCard(index)
-    )
 
-    this.gameBoard.appendChild(cardElement)
+    )
 }
 
 Game.prototype.getVisibleCards = function () {
@@ -97,6 +155,8 @@ Game.prototype.getVisibleCards = function () {
 
 Game.prototype.toggleCard = function (index) {
     this.startCountingTime()
+
+
 
     if (this.getVisibleCards().length > 1) {
         this.hideVisibleCards()
@@ -109,16 +169,36 @@ Game.prototype.toggleCard = function (index) {
     }
 
     this.render()
-
     this.checkWin()
+
 }
 
 Game.prototype.checkWin = function () {
     const numberOfUncompletedCards = this.deckOfCards.filter(card => !card.complete).length
 
-    if (numberOfUncompletedCards === 0) {
-        console.log('Win')
+    if (numberOfUncompletedCards > 0) return
+
+    if (this.currentLevel === 1) {
+        this.currentLevel++
+        if (confirm('Gratulujemy! Wygrałeś! Czy chcesz zagrać na trudniejszym poziomie?')) {
+            this.reinit(16)
+        } else {
+            this.reinit(4)
+        }
     }
+    else if (this.currentLevel === 2) {
+        if (confirm('Gratulujemy! Wygrałeś Czy chcesz zagrać na trudniejszym poziomie?')) {
+            this.reinit(36)
+        } else {
+            this.reinit(16)
+        }
+    } else {
+        this.renderRankingList()
+        clearInterval(this.timeIntervalId)
+    }
+        this.displayScore()
+
+    // }
 }
 
 Game.prototype.makeVisibleCard = function (index) {
@@ -145,7 +225,7 @@ Game.prototype.hideVisibleCards = function () {
 }
 
 Game.prototype.compareVisibleCards = function () {
-    let compareVisibleCards = this.deckOfCards.filter(function (card) {
+    this.deckOfCards.filter(function (card) {
         return card.complete === true && card.visible === true
     }).length
 }
@@ -169,4 +249,40 @@ Game.prototype.startCountingTime = function () {
         },
         1000
     )
+}
+
+Game.prototype.displayScore = function () {
+    let scoreMessage = ''
+    const lastDigitOfNumber = this.time.toString().split('').pop()
+    if (this.time === 1) {
+        scoreMessage = 'Gratulacje! Twoj wynik to ' + this.time + ' sekunda.'
+    } else if (this.time === 0 || (this.time > 4 && this.time < 22) || lastDigitOfNumber > 4) {
+        scoreMessage = 'Gratulacje! Twoj wynik to ' + this.time + ' sekund.'
+    } else if (lastDigitOfNumber > 1 || lastDigitOfNumber < 5) {
+        scoreMessage = 'Gratulacje! Twoj wynik to ' + this.time + ' sekundy.'
+    }
+    console.log(lastDigitOfNumber)
+    this.gameContainer.querySelector('p').innerHTML = scoreMessage
+    const currentTime = new Date()
+    const id = currentTime.getHours() + ':' + currentTime.getMinutes() + ':' + currentTime.getSeconds()
+    localStorage.setItem(id, this.time)
+}
+
+Game.prototype.renderRankingList = function () {
+    const ranking = JSON.parse(localStorage.getItem('jfddl5-messengers-memory')) || []
+
+    const nick = prompt('Podaj nick!')
+
+    if(nick === null) return
+
+    const newRanking = ranking.concat({
+        nick: nick,
+        score: this.time
+    })
+
+    newRanking.sort((a, b) => a.score > b.score)
+
+    localStorage.setItem('jfddl5-messengers-memory', JSON.stringify(newRanking))
+
+    console.log(newRanking)    
 }
