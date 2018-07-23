@@ -42,12 +42,19 @@
                 </a>
             </h1>
         </div>
-        <ul class="navbar__container__items">
+        <a href="#">
+        <div class="hamburger__icon">
+            <i class="fa fa-bars"></i>
+        </a>
+        </div>
+    
+
+        <ul class="navbar__container__items navbar__container__items--close">
             <li class="navbar__container__items__links">
                 <a href="#hero">Strona główna</a>
             </li>
             <li class="navbar__container__items__links">
-                <a href="#features">Funkcjonalność</a>
+                <a href="#features">Funkcjonalnośći</a>
             </li>
             <li class="navbar__container__items__links">
                 <a href="#descriptions">O aplikacji</a>
@@ -58,12 +65,9 @@
             <li class="navbar__container__items__links">
                 <a href="#premiere_section">Zapisy na premierę</a>
             </li>
-            <li class="navbar__container__items__links">
-                <a href="#calculator_section">Cena aplikacji</a>
-            </li>
-
         </ul>
     </nav>
+    <script src="navbar2.js"></script>
 
     <!-- HERO -->
     <section id="hero" class="hero">
@@ -329,6 +333,7 @@
     <script src="slider.js"></script>
     <script src="in-view.js"></script>
     <script src="calculator.js"></script>
+    <script src="navbar.js"></script>
     <script>
         inView('#team')
             .on('enter', () => {
