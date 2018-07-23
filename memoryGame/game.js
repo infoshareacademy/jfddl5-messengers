@@ -62,12 +62,11 @@ Game.prototype.makeButtons = function () {
 
 Game.prototype.init = function () {
     this.makeGameContainer()
-    this.makeButtons()
+    // this.makeButtons()
     this.makeGameBoard()
     this.render()
     this.shuffle(this.deckOfCards)
     this.makeTimeDiv()
-    this.renderRankingList()
 }
 
 Game.prototype.reinit = function (numberOfCards) {
@@ -132,9 +131,9 @@ Game.prototype.renderSingleCard = function (card, index) {
     cardElement.style.textAlign = 'center'
     this.gameBoard.appendChild(cardElement)
 
-    // if (card.visible) {
+    if (card.visible) {
         cardElement.innerText = card.front
-    // }
+    }
 
     if (card.complete) {
         cardElement.innerText = card.front
@@ -144,7 +143,7 @@ Game.prototype.renderSingleCard = function (card, index) {
     cardElement.addEventListener(
         'click',
         () => this.toggleCard(index)
-        
+
     )
 }
 
@@ -157,7 +156,7 @@ Game.prototype.getVisibleCards = function () {
 Game.prototype.toggleCard = function (index) {
     this.startCountingTime()
 
-    
+
 
     if (this.getVisibleCards().length > 1) {
         this.hideVisibleCards()
@@ -177,7 +176,7 @@ Game.prototype.toggleCard = function (index) {
 Game.prototype.checkWin = function () {
     const numberOfUncompletedCards = this.deckOfCards.filter(card => !card.complete).length
 
-    if(numberOfUncompletedCards > 0 ) return
+    if (numberOfUncompletedCards > 0) return
 
     if (this.currentLevel === 1) {
         this.currentLevel++
@@ -194,9 +193,12 @@ Game.prototype.checkWin = function () {
             this.reinit(16)
         }
     } else {
+        this.renderRankingList()
         clearInterval(this.timeIntervalId)
-        this.displayScore()
     }
+        this.displayScore()
+
+    // }
 }
 
 Game.prototype.makeVisibleCard = function (index) {
@@ -239,53 +241,48 @@ Game.prototype.startCountingTime = function () {
     if (this.timeIntervalId !== null) {
         return
     }
-  
 
     this.timeIntervalId = setInterval(
         () => {
-            
             this.time = this.time + 1
             this.renderTime()
-
         },
         1000
     )
 }
 
-Game.prototype.displayScore = function(){
+Game.prototype.displayScore = function () {
     let scoreMessage = ''
     const lastDigitOfNumber = this.time.toString().split('').pop()
-    if (this.time === 1){
+    if (this.time === 1) {
         scoreMessage = 'Gratulacje! Twoj wynik to ' + this.time + ' sekunda.'
-    } else if(this.time === 0 || (this.time>4 && this.time<22) || lastDigitOfNumber>4){
+    } else if (this.time === 0 || (this.time > 4 && this.time < 22) || lastDigitOfNumber > 4) {
         scoreMessage = 'Gratulacje! Twoj wynik to ' + this.time + ' sekund.'
-    } else if (lastDigitOfNumber>1 || lastDigitOfNumber<5){
+    } else if (lastDigitOfNumber > 1 || lastDigitOfNumber < 5) {
         scoreMessage = 'Gratulacje! Twoj wynik to ' + this.time + ' sekundy.'
     }
     console.log(lastDigitOfNumber)
     this.gameContainer.querySelector('p').innerHTML = scoreMessage
     const currentTime = new Date()
-    const id = currentTime.getHours()+':'+currentTime.getMinutes()+':'+currentTime.getSeconds()
+    const id = currentTime.getHours() + ':' + currentTime.getMinutes() + ':' + currentTime.getSeconds()
     localStorage.setItem(id, this.time)
 }
 
-Game.prototype.renderRankingList=function(){
-    const ranking = localStorage 
-    const rankingContainer = document.createElement('div')
-    let sortable = []
-    for (let date in ranking){
-        sortable.push([date, ranking[date]])
-    }
-    sortable.sort(function(a,b){
-        return a[1] - b[1]
+Game.prototype.renderRankingList = function () {
+    const ranking = JSON.parse(localStorage.getItem('jfddl5-messengers-memory')) || []
+
+    const nick = prompt('Podaj nick!')
+
+    if(nick === null) return
+
+    const newRanking = ranking.concat({
+        nick: nick,
+        score: this.time
     })
-    console.log(sortable)
-    let onlyStrings = []
-    let temp= []
-    for (i=0; i<sortable.length; i++){
-        if (typeof(sortable[i][1])==='string'){
-            temp = sortable[i]
-            console.log(temp)
-        }
-    }
+
+    newRanking.sort((a, b) => a.score > b.score)
+
+    localStorage.setItem('jfddl5-messengers-memory', JSON.stringify(newRanking))
+
+    console.log(newRanking)    
 }
