@@ -284,10 +284,12 @@ Game.prototype.renderRankingList = function () {
 
     localStorage.setItem('jfddl5-messengers-memory', JSON.stringify(newRanking))
 
+    const rankingToDisplay = newRanking.filter((el, i) => i < 10)
+
     const rankContainer = document.createElement('div')
-    for (i = 0; i < 10; i++) {
+    for (i = 0; i < rankingToDisplay.length; i++) {
         const p = document.createElement('p')
-        p.innerText = newRanking[i].nick + ' ' + newRanking[i].score
+        p.innerText = rankingToDisplay[i].nick + ' ' + rankingToDisplay[i].score
 
         rankContainer.appendChild(p)
     }
