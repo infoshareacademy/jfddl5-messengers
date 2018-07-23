@@ -196,7 +196,7 @@ Game.prototype.checkWin = function () {
         this.renderRankingList()
         clearInterval(this.timeIntervalId)
     }
-        this.displayScore()
+    this.displayScore()
 
     // }
 }
@@ -273,7 +273,7 @@ Game.prototype.renderRankingList = function () {
 
     const nick = prompt('Podaj nick!')
 
-    if(nick === null) return
+    if (nick === null) return
 
     const newRanking = ranking.concat({
         nick: nick,
@@ -284,5 +284,12 @@ Game.prototype.renderRankingList = function () {
 
     localStorage.setItem('jfddl5-messengers-memory', JSON.stringify(newRanking))
 
-    console.log(newRanking)    
+    const rankContainer = document.createElement('div')
+    for (i = 0; i < 10; i++) {
+        const p = document.createElement('p')
+        p.innerText = newRanking[i].nick + ' ' + newRanking[i].score
+
+        rankContainer.appendChild(p)
+    }
+    this.gameContainer.appendChild(rankContainer)
 }
