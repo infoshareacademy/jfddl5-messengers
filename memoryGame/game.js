@@ -5,10 +5,10 @@ function Card(front) {
 }
 
 const newCardArray = function (newArrayLength) {
-        return Array(newArrayLength).fill({}).map(function (item, index) {
+    return Array(newArrayLength).fill({}).map(function (item, index) {
         return new Card(index + 1)
-        })
-    }
+    })
+}
 
 function Game(selector, numberOfCards) {
     this.container = document.querySelector(selector)
@@ -16,12 +16,12 @@ function Game(selector, numberOfCards) {
     this.scoreContainer = null
     this.timeIntervalId = null
     this.gameContainer = null
-    this.deckOfCards = newCardArray(numberOfCards).concat(newCardArray(numberOfCards))
-    
+    this.deckOfCards = newCardArray(numberOfCards / 2).concat(newCardArray(numberOfCards / 2))
+    this.currentLevel = 1
     this.time = 0
+    this.yourScore = 0
     this.numberOfCardsOnBoardSide = Math.sqrt(this.deckOfCards.length)
     this.cardDimension = (100 / this.numberOfCardsOnBoardSide) + '%'
-    
     this.init()
 }
 
@@ -32,16 +32,17 @@ Game.prototype.makeGameContainer = function () {
     this.gameContainer = gameContainer
 }
 
-Game.prototype.makeSingleButton = function(numberOfCards){
+Game.prototype.makeSingleButton = function (numberOfCards) {
     const button = document.createElement('button')
     button.style.width = '100px'
     button.style.height = '30px'
-    button.innerText = numberOfCards +' kart'
+    button.innerText = numberOfCards + ' kart'
+    // button.disabled = true
     button.addEventListener('click', () => {
-    this.reinit(numberOfCards)
-    this.gameContainer.querySelector('p').innerHTML = '0 sekund'
-    clearInterval(this.timeIntervalId)
+        this.reinit(numberOfCards)
     })
+    console.log(numberOfCards)
+
     return button
 }
 
@@ -55,7 +56,7 @@ Game.prototype.makeButtons = function () {
     levelsContainer.appendChild(button1)
     levelsContainer.appendChild(button2)
     levelsContainer.appendChild(button3)
-    
+
     this.gameContainer.appendChild(levelsContainer)
 }
 
@@ -63,15 +64,23 @@ Game.prototype.init = function () {
     this.makeGameContainer()
     this.makeButtons()
     this.makeGameBoard()
-    
     this.render()
     this.shuffle(this.deckOfCards)
     this.makeTimeDiv()
     this.renderRankingList()
 }
 
-Game.prototype.reinit = function(numberOfCards){
-    this.deckOfCards = newCardArray(numberOfCards/2).concat(newCardArray(numberOfCards/2))
+Game.prototype.reinit = function (numberOfCards) {
+    if (numberOfCards === 4) {
+        this.currentLevel = 1
+    }
+    else if (numberOfCards === 16) {
+        this.currentLevel = 2
+    }
+    else {
+        this.currentLevel = 3
+    }
+    this.deckOfCards = newCardArray(numberOfCards / 2).concat(newCardArray(numberOfCards / 2))
     this.shuffle(this.deckOfCards)
     this.numberOfCardsOnBoardSide = Math.sqrt(this.deckOfCards.length)
     this.cardDimension = (100 / this.numberOfCardsOnBoardSide) + '%'
@@ -121,10 +130,11 @@ Game.prototype.renderSingleCard = function (card, index) {
     cardElement.style.color = 'white'
     cardElement.style.fontSize = '5em'
     cardElement.style.textAlign = 'center'
+    this.gameBoard.appendChild(cardElement)
 
-    if (card.visible) {
+    // if (card.visible) {
         cardElement.innerText = card.front
-    }
+    // }
 
     if (card.complete) {
         cardElement.innerText = card.front
@@ -136,8 +146,6 @@ Game.prototype.renderSingleCard = function (card, index) {
         () => this.toggleCard(index)
         
     )
-
-    this.gameBoard.appendChild(cardElement)
 }
 
 Game.prototype.getVisibleCards = function () {
@@ -169,15 +177,26 @@ Game.prototype.toggleCard = function (index) {
 Game.prototype.checkWin = function () {
     const numberOfUncompletedCards = this.deckOfCards.filter(card => !card.complete).length
 
-    if (numberOfUncompletedCards === 0) {
-        console.log('Win')
-        this.yourScore = this.time 
-        console.log(this.yourScore)
+    if(numberOfUncompletedCards > 0 ) return
+
+    if (this.currentLevel === 1) {
+        this.currentLevel++
+        if (confirm('Gratulujemy! Wygrałeś! Czy chcesz zagrać na trudniejszym poziomie?')) {
+            this.reinit(16)
+        } else {
+            this.reinit(4)
+        }
+    }
+    else if (this.currentLevel === 2) {
+        if (confirm('Gratulujemy! Wygrałeś Czy chcesz zagrać na trudniejszym poziomie?')) {
+            this.reinit(36)
+        } else {
+            this.reinit(16)
+        }
+    } else {
         clearInterval(this.timeIntervalId)
         this.displayScore()
-        
     }
-    
 }
 
 Game.prototype.makeVisibleCard = function (index) {
@@ -205,7 +224,7 @@ Game.prototype.hideVisibleCards = function () {
 
 Game.prototype.compareVisibleCards = function () {
     this.deckOfCards.filter(function (card) {
-    return card.complete === true && card.visible === true
+        return card.complete === true && card.visible === true
     }).length
 }
 
@@ -227,9 +246,7 @@ Game.prototype.startCountingTime = function () {
             
             this.time = this.time + 1
             this.renderTime()
-                    if (this.time > this.yourScore){
-                        this.displayScore()
-                    }
+
         },
         1000
     )
@@ -237,19 +254,19 @@ Game.prototype.startCountingTime = function () {
 
 Game.prototype.displayScore = function(){
     let scoreMessage = ''
-    const lastDigitOfNumber = this.yourScore.toString().split('').pop()
-    if (this.yourScore === 1){
-        scoreMessage = 'Gratulacje! Twoj wynik to ' + this.yourScore + ' sekunda.'
-    } else if(this.yourScore === 0 || (this.yourScore>4 && this.yourScore<22) || lastDigitOfNumber>4){
-        scoreMessage = 'Gratulacje! Twoj wynik to ' + this.yourScore + ' sekund.'
+    const lastDigitOfNumber = this.time.toString().split('').pop()
+    if (this.time === 1){
+        scoreMessage = 'Gratulacje! Twoj wynik to ' + this.time + ' sekunda.'
+    } else if(this.time === 0 || (this.time>4 && this.time<22) || lastDigitOfNumber>4){
+        scoreMessage = 'Gratulacje! Twoj wynik to ' + this.time + ' sekund.'
     } else if (lastDigitOfNumber>1 || lastDigitOfNumber<5){
-        scoreMessage = 'Gratulacje! Twoj wynik to ' + this.yourScore + ' sekundy.'
+        scoreMessage = 'Gratulacje! Twoj wynik to ' + this.time + ' sekundy.'
     }
     console.log(lastDigitOfNumber)
     this.gameContainer.querySelector('p').innerHTML = scoreMessage
     const currentTime = new Date()
     const id = currentTime.getHours()+':'+currentTime.getMinutes()+':'+currentTime.getSeconds()
-    localStorage.setItem(id, this.yourScore)
+    localStorage.setItem(id, this.time)
 }
 
 Game.prototype.renderRankingList=function(){
@@ -271,12 +288,4 @@ Game.prototype.renderRankingList=function(){
             console.log(temp)
         }
     }
-
-
-    // const filterStrings = array => {
-    //     typeof(array) === 'string'
-    // }
-
-    // const onlyScores = sortable.filter(filterStrings)
-    // console.log(onlyScores)
 }
