@@ -19,6 +19,7 @@ function Game(selector, numberOfCards) {
     this.deckOfCards = newCardArray(numberOfCards / 2).concat(newCardArray(numberOfCards / 2))
     this.currentLevel = 1
     this.time = 0
+    this.yourScore = 0
     this.numberOfCardsOnBoardSide = Math.sqrt(this.deckOfCards.length)
     this.cardDimension = (100 / this.numberOfCardsOnBoardSide) + '%'
     this.init()
@@ -61,7 +62,7 @@ Game.prototype.makeButtons = function () {
 
 Game.prototype.init = function () {
     this.makeGameContainer()
-    this.makeButtons()
+    // this.makeButtons()
     this.makeGameBoard()
     this.render()
     this.shuffle(this.deckOfCards)
@@ -142,6 +143,7 @@ Game.prototype.renderSingleCard = function (card, index) {
     cardElement.addEventListener(
         'click',
         () => this.toggleCard(index)
+
     )
 }
 
@@ -153,6 +155,8 @@ Game.prototype.getVisibleCards = function () {
 
 Game.prototype.toggleCard = function (index) {
     this.startCountingTime()
+
+
 
     if (this.getVisibleCards().length > 1) {
         this.hideVisibleCards()
@@ -166,12 +170,15 @@ Game.prototype.toggleCard = function (index) {
 
     this.render()
     this.checkWin()
+
 }
 
 Game.prototype.checkWin = function () {
     const numberOfUncompletedCards = this.deckOfCards.filter(card => !card.complete).length
 
-    if (numberOfUncompletedCards === 0 && this.currentLevel === 1) {
+    if (numberOfUncompletedCards > 0) return
+
+    if (this.currentLevel === 1) {
         this.currentLevel++
         if (confirm('Gratulujemy! Wygrałeś! Czy chcesz zagrać na trudniejszym poziomie?')) {
             this.reinit(16)
@@ -179,13 +186,19 @@ Game.prototype.checkWin = function () {
             this.reinit(4)
         }
     }
-    else if (numberOfUncompletedCards === 0 && this.currentLevel === 2) {
+    else if (this.currentLevel === 2) {
         if (confirm('Gratulujemy! Wygrałeś Czy chcesz zagrać na trudniejszym poziomie?')) {
             this.reinit(36)
         } else {
             this.reinit(16)
         }
+    } else {
+        this.renderRankingList()
+        clearInterval(this.timeIntervalId)
     }
+        this.displayScore()
+
+    // }
 }
 
 Game.prototype.makeVisibleCard = function (index) {
@@ -236,4 +249,40 @@ Game.prototype.startCountingTime = function () {
         },
         1000
     )
+}
+
+Game.prototype.displayScore = function () {
+    let scoreMessage = ''
+    const lastDigitOfNumber = this.time.toString().split('').pop()
+    if (this.time === 1) {
+        scoreMessage = 'Gratulacje! Twoj wynik to ' + this.time + ' sekunda.'
+    } else if (this.time === 0 || (this.time > 4 && this.time < 22) || lastDigitOfNumber > 4) {
+        scoreMessage = 'Gratulacje! Twoj wynik to ' + this.time + ' sekund.'
+    } else if (lastDigitOfNumber > 1 || lastDigitOfNumber < 5) {
+        scoreMessage = 'Gratulacje! Twoj wynik to ' + this.time + ' sekundy.'
+    }
+    console.log(lastDigitOfNumber)
+    this.gameContainer.querySelector('p').innerHTML = scoreMessage
+    const currentTime = new Date()
+    const id = currentTime.getHours() + ':' + currentTime.getMinutes() + ':' + currentTime.getSeconds()
+    localStorage.setItem(id, this.time)
+}
+
+Game.prototype.renderRankingList = function () {
+    const ranking = JSON.parse(localStorage.getItem('jfddl5-messengers-memory')) || []
+
+    const nick = prompt('Podaj nick!')
+
+    if(nick === null) return
+
+    const newRanking = ranking.concat({
+        nick: nick,
+        score: this.time
+    })
+
+    newRanking.sort((a, b) => a.score > b.score)
+
+    localStorage.setItem('jfddl5-messengers-memory', JSON.stringify(newRanking))
+
+    console.log(newRanking)    
 }
