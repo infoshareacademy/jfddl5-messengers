@@ -6,7 +6,6 @@
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css"
     />
     <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
-    <script src="cookies.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -43,11 +42,11 @@
             </h1>
         </div>
         <a href="#">
-        <div class="hamburger__icon">
-            <i class="fa fa-bars"></i>
+            <div class="hamburger__icon">
+                <i class="fa fa-bars"></i>
         </a>
         </div>
-    
+
 
         <ul class="navbar__container__items navbar__container__items--close">
             <li class="navbar__container__items__links">
@@ -136,14 +135,15 @@
     <section id="descriptions" class="descriptions">
         <div class="description">
             <div class="description_item description_item-photo-1"> </div>
-            <div class="description_item description_item-content">Nowoczesna, bezpieczna aplikacja dla dojżałych użytkowników internetu chcących pozostać w stałym kontakcie z
-                najbliższymi
+            <div class="description_item description_item-content">Nowoczesna, bezpieczna aplikacja dla dojżałych użytkowników
+                internetu chcących pozostać w stałym kontakcie z najbliższymi
             </div>
         </div>
         <div class="description description--reversed">
             <div class="description_item description_item-photo-2"></div>
-            <div class="description_item description_item-content">Nasza aplikacja zapewnia łatwość instalacji i obsługi, udogodnienia w postaci możliwości powiększania tekstu,
-                odpowiednio dostosowane przyciski, a w dodatkowych opcjach również funkcja SOS i przypomnienia. </div>
+            <div class="description_item description_item-content">Nasza aplikacja zapewnia łatwość instalacji i obsługi,
+                udogodnienia w postaci możliwości powiększania tekstu, odpowiednio dostosowane przyciski, a w dodatkowych
+                opcjach również funkcja SOS i przypomnienia. </div>
         </div>
 
 
@@ -278,34 +278,34 @@
         <section class="calculator_container">
 
             <fieldset class="fieldset">
-                <h3 class = "calculator_legend">Oblicz cenę aplikacji</h3>
+                <h3 class="calculator_legend">Oblicz cenę aplikacji</h3>
                 <div>
-                    <label class = "calculator_text_user" for="type-of-user">Wybierz rodzaj użytkownika: </label>
+                    <label class="calculator_text_user" for="type-of-user">Wybierz rodzaj użytkownika: </label>
                     <div class="calculator__button_individual">
                         <input checked type="radio" name="user-type" value="indywidualny" id="individual" class="individual">
-                        <label class = "calculator_text" for="individual">Indywidualny/niekomercyjny</label>
+                        <label class="calculator_text" for="individual">Indywidualny/niekomercyjny</label>
                     </div>
                     <div class="calculator__button_company">
                         <input type="radio" name="user-type" value="firma" id="company">
-                        <label class = "calculator_text" for="company">Firma/komercyjny</label>
+                        <label class="calculator_text" for="company">Firma/komercyjny</label>
                     </div>
                 </div>
-                <div class = "calculator__range_element">
-                    <label for="range-element" id = "number-of-users" class = "calculator_text">Ilość użytkowników:</label>
+                <div class="calculator__range_element">
+                    <label for="range-element" id="number-of-users" class="calculator_text">Ilość użytkowników:</label>
                     <div class="tickmarks">
-                        1<input class = "calculator_text" type="range" id="rangeinput" min="1" max="10"   value="1" />10
+                        1<input class="calculator_text" type="range" id="rangeinput" min="1" max="10" value="1" />10
 
                         <datalist id="tickmarks">
                             <option value="1" label="1">
-                            <option value="2" label="2">
-                            <option value="3" label="3">
-                            <option value="4" label="4">
-                            <option value="5" label="5">
-                            <option value="6" label="6">
-                            <option value="7" label="7">
-                            <option value="8" label="8">
-                            <option value="9" label="9">
-                            <option value="10" label="10">
+                                <option value="2" label="2">
+                                    <option value="3" label="3">
+                                        <option value="4" label="4">
+                                            <option value="5" label="5">
+                                                <option value="6" label="6">
+                                                    <option value="7" label="7">
+                                                        <option value="8" label="8">
+                                                            <option value="9" label="9">
+                                                                <option value="10" label="10">
                         </datalist>
                     </div>
 
@@ -333,22 +333,13 @@
         <p>Copyright © 2018 - Messengers</p>
     </footer>
 
-    <script src="slider.js"></script>
-    <script src="in-view.js"></script>
-    <script src="calculator.js"></script>
-    <script src="navbar.js"></script>
-    <script>
-        inView('#team')
-            .on('enter', () => {
-                const teamPhotos = document.querySelectorAll('.animation')
+    <!-- <script src="slider.js"></script> -->
+    <!-- <script src="in-view.js"></script> -->
+    <!-- <script src="calculator.js"></script> -->
+    <!-- <script src="navbar.js"></script> -->
+    <!-- <script src="cookies.js"></script> -->
 
-                for (let i = 0; i < teamPhotos.length; i++) {
-                    teamPhotos[i].classList.add('animated')
-                    teamPhotos[i].classList.add('slideInUp')
-                }
-            })
-
-
-    </script>
+    <script src="./dist/bundle.js"></script>
 </body>
+
 </html>

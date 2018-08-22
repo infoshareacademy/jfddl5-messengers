@@ -1,0 +1,5 @@
+import calculator from './calculator'
+import navbar from './navbar'
+import slider from './slider'
+import cookies from './cookies'
+import animationPictures from './animationPictures'
